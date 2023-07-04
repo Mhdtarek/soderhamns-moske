@@ -18,7 +18,7 @@
 </script>
 
 <main class="responsive">
-  <h2 style="text-align: center;">Söderhamns Moské</h2>
+  <h2 >Söderhamns Moské</h2>
   {#if prayerTimes != {}}
     <article class="card green7" style="overflow: scroll;">
       <table class="border large-space" style="overflow-x: scroll;">
@@ -58,5 +58,8 @@
     <style>
       table {
         overflow-x: scroll;
+      }
+      h2 {
+        text-align: left
       }
     </style>

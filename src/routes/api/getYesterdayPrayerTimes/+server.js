@@ -9,13 +9,14 @@ export function GET({ url, params }) {
   // @ts-ignore
   const today = dateToDayAndMonth(new Date());
   const month = today.month.toString();
-  const day = today.day.toString();
+  const day = today.day - 1;
+  const dayString = day.toString();
 
   try {
     let dayPrayerTimes = getSpecificDayPrayerTimes(
       monthToJsonFile,
       month,
-      day + 1
+      dayString
     );
     return json(dayPrayerTimes);
   } catch (err) {

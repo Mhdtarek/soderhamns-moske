@@ -24,7 +24,7 @@
     position: relative;
   }
   nav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
     height: 7vh;
