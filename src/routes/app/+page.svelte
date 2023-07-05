@@ -45,7 +45,7 @@
             <th>Magrib</th>
             <th>{prayerTimes.Magrib}</th>
           </tr>
-          <tr>
+          <tr>  
             <th>Isha</th>
             <th>{prayerTimes.Isha}</th>
           </tr>
