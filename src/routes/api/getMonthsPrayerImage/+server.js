@@ -61,7 +61,7 @@ export function GET({ url, params }) {
       headerHeight * 0.25
     );
     ctx.fillText(
-      "Swish number: 1234019146",
+      "Swish nummer: 1234019146",
       tableWidth * 0.5,
       headerHeight * 0.75
     );

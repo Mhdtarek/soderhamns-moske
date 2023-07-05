@@ -18,7 +18,7 @@
 </script>
 
 <main class="responsive">
-  <h2 >Söderhamns Moské</h2>
+  <h1 >Söderhamns Moské</h1>
   {#if prayerTimes != {}}
     <article class="card green7" style="overflow: scroll;">
       <table class="border large-space" style="overflow-x: scroll;">

@@ -13,7 +13,7 @@
       <i>newspaper</i>
     </a>
     <a class="transparent square round extra" href="/app/donera">
-      <i>mic</i>
+      <i>volunteer_activism</i>
     </a>
   </nav>
 </div>
