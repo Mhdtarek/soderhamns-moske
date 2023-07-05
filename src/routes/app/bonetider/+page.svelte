@@ -8,7 +8,7 @@ import { forEachChild } from "typescript";
 * @type {any[]}
 */
   let monthlyPrayerTimes = []
-
+  let monthsPrayerTimesImage = ""
   onMount(async () => {
     fetch("/api/getTodayPrayerTimes")
       .then((response) => {
@@ -60,7 +60,24 @@ import { forEachChild } from "typescript";
       .catch(function (error) { 
         console.log(error); 
       }); 
+    fetch("/api/getMonthsPrayerImage")
+      .then((response) => {
+        return response.text()
+      })
+      .then((data) => {
+        console.log(data)
+        monthsPrayerTimesImage = data
+      })  
+      .catch(function (error) { 
+        console.log(error); 
+      }); 
   }); 
+  function downloadImage() {
+    const link = document.createElement("a");
+    link.href = monthsPrayerTimesImage;
+    link.download = "image.png";
+    link.click();
+  }
 </script>
 <main class="responsive">
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Bönetider</h4>
@@ -178,6 +195,9 @@ import { forEachChild } from "typescript";
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green7" style="overflow: scroll;">
+    <button on:click={downloadImage} class="green10">
+      Ladda ner som bild
+    </button>    
     <table class="border large-space" style="overflow-x: scroll;">
       <thead>
         <tr>
