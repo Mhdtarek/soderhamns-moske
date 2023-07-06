@@ -1,8 +1,12 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "app.netlify.soderhamns_moske.twa",
-        "sha256_cert_fingerprints": ["4C:2D:7D:0E:60:99:E5:C1:26:66:98:9D:55:09:FF:02:E1:51:92:F4:B6:0B:18:00:FC:79:EB:92:E1:C3:98:87"]
-      }
-    }]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "mhdtarek.soderhamnmoske",
+      "sha256_cert_fingerprints": [
+        "E6:48:10:5F:0C:28:36:FD:20:C6:69:F0:46:1F:A4:79:E3:D8:9B:20:40:ED:F9:4C:45:89:C2:F5:7F:19:02:10"
+      ]
+    }
+  }
+]
