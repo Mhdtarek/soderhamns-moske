@@ -7,7 +7,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "Söderhamns Moske",
-  "start_url": "/",
+  "start_url": "/app",
   "theme_color": "#00c908",
   "categories": ["utilities"],
   "screenshots": [],
