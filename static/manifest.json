@@ -16,6 +16,11 @@
       "src": "./favicon.png",
       "type": "image/png",
       "sizes": "128x128"
+    },
+    {
+      "src": "./faviconlarge.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "shortcuts": [
