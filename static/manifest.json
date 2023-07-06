@@ -1,0 +1,36 @@
+{
+  "background_color": "#16ad00",
+  "description": "Se bönetider I söderhamn",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Söderhamns Moske",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Söderhamns Moske",
+  "start_url": "/",
+  "theme_color": "#00c908",
+  "categories": ["utilities"],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bönetider",
+      "url": "/app/bonetider"
+    },
+    {
+      "name": "Nyheter",
+      "url": "/app/nyheter"
+    },
+    {
+      "name": "Donera",
+      "url": "/app/donera"
+    }
+  ],
+  "prefer_related_applications": false
+}

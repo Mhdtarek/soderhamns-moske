@@ -1,3 +1,6 @@
+<svelte:head>
+  
+</svelte:head>
 <div class="wrapper">
   <slot />
   <nav class="tertiary-container green4">
