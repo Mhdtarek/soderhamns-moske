@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.soderhamns_moske.twa",
+        "sha256_cert_fingerprints": ["4C:2D:7D:0E:60:99:E5:C1:26:66:98:9D:55:09:FF:02:E1:51:92:F4:B6:0B:18:00:FC:79:EB:92:E1:C3:98:87"]
+      }
+    }]
