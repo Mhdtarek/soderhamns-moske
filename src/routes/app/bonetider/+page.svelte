@@ -204,9 +204,6 @@ import { forEachChild } from "typescript";
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green7" style="overflow: scroll;">
-    <button on:click={downloadImage} class="green10">
-      Ladda ner som bild
-    </button>    
     <table class="border large-space" style="overflow-x: scroll;">
       <thead>
         <tr>
