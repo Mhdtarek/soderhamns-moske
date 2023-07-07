@@ -1,6 +1,5 @@
 export const fetchMarkdownPosts = async () => {
   const allPostFiles = import.meta.glob("../../routes/app/nyheter/*.md");
-  console.log(allPostFiles);
   const iterablePostFiles = Object.entries(allPostFiles);
 
   if (iterablePostFiles.length > 0) {
@@ -8,7 +7,6 @@ export const fetchMarkdownPosts = async () => {
       iterablePostFiles.map(async ([path, resolver]) => {
         // @ts-ignore
         const { metadata } = await resolver();
-        console.log(metadata);
         const postPath = path.slice(12, -3);
 
         return {
@@ -17,8 +15,6 @@ export const fetchMarkdownPosts = async () => {
         };
       })
     );
-    console.log(iterablePostFiles);
-    console.log(allPosts);
     allPosts.sort((a, b) => {
       // Perform sorting based on the meta.date property
       const dateA = new Date(a.meta.date);
