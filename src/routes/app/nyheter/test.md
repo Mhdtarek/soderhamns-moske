@@ -1,6 +1,5 @@
 ---
-title: test
-date: 1999-04-01
+title: Salatul Jummah
+date: 2023-07-07T09:38:23.703Z
 ---
-
-test2
+# اليوم صلاة الجمعة
