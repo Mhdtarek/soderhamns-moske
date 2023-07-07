@@ -4,8 +4,8 @@
 <main class=responsive>
   <article>
     <h3>{ data.title }</h3>
-    <p>Published: {data.date}</p>
-    <a href="/app/nyheter">Gå Tillbaka</a>
+    <p>Lagt ut: {data.date}</p>
+    <a href="/app/nyheter" class="button green7" style="margin-top: 15px; margin-left: 0px">← Gå Tillbaka</a>
   </article>
   <div class="responsive">
     <svelte:component this={data.content} class="content"/>
