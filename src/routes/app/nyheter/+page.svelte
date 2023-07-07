@@ -31,7 +31,16 @@
 
 </script>
 <main class="responsive">
-  <h4 style="text-align: center; display: block; margin-top: 20px; ">Nyheter</h4>
+  <article class="no-padding border primary-container">
+    <img class="responsive medium" src="/mosquenews.png"><!----><!---->
+    <div class="absolute bottom left right padding bottom-shadow white-text">
+      <nav>
+        <div class="max"></div>
+        <h5 style="text-align: center; display: block;">Nyheter</h5>
+        <div class="max"></div>
+      </nav>
+    </div>
+  </article>
   <div class="grid large-space">
     {#each posts as post}
       <article class="s6" style="margin-top: 0;">

@@ -80,7 +80,16 @@ import { forEachChild } from "typescript";
   }
 </script>
 <main class="responsive">
-  <h4 style="text-align: center; display: block; margin-top: 20px; ">Bönetider</h4>
+  <article class="no-padding border primary-container">
+    <img class="responsive medium" src="/prayermosque.png"><!----><!---->
+    <div class="absolute bottom left right padding bottom-shadow white-text">
+      <nav>
+        <div class="max"></div>
+        <h5 style="text-align: center; display: block;">Bönetider</h5>
+        <div class="max"></div>
+      </nav>
+    </div>
+  </article>
   <div class="tabs center-align min">
     <a data-ui="#page1">Bönetider igår</a>
     <a data-ui="#page2" class="active">Bönetider idag</a>

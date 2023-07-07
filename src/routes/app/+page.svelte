@@ -18,7 +18,18 @@
 </script>
 
 <main class="responsive">
-  <h1 >Söderhamns Moské</h1>
+  <article class="no-padding border primary-container">
+    <img class="responsive medium" src="/mosque.png"><!----><!---->
+    <div class="absolute bottom left right padding bottom-shadow white-text">
+      <nav>
+        <h5 style="text-align: center; display: block;">Söderhamns Moské</h5>
+        <div class="max"></div>
+        <a href="/app/om" class="circle transparent">
+          <i>info</i>
+        </a>
+      </nav>
+    </div>
+  </article>
   {#if prayerTimes != {}}
     <article class="card green7" style="overflow: scroll;">
       <table class="border large-space" style="overflow-x: scroll;">
