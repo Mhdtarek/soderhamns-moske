@@ -1,4 +1,4 @@
-<h1>Privacy Policy for "Söderhamns Moské" Mobile Application</h1>
+<h1>English Privacy Policy for "Söderhamns Moské" Mobile Application</h1>
   <h2>Effective Date: For two years from 2023-07-01</h2>
 
   <p>At "Söderhamns Moské," we value your privacy and are committed to protecting any personal information you may provide while using our mobile application. This Privacy Policy outlines the types of information we collect, how we use it, and the measures we take to safeguard your data.</p>
@@ -25,3 +25,29 @@
   <p>If you have any questions or concerns regarding this Privacy Policy or our data practices, please contact us at [insert contact information].</p>
 
   <p>By using the "Söderhamns Moské" mobile application, you acknowledge that you have read and understood this Privacy Policy and agree to the collection, use, and disclosure of your information as described herein.</p>
+<h1>SvenskIntegritetspolicy för mobilapplikationen "Söderhamns Moské"</h1>
+
+  <h2>Giltigt från och med två år från 2023-07-01</h2>
+
+  <p>Hos "Söderhamns Moské" värnar vi om din integritet och åtar oss att skydda all personlig information du kan lämna vid användning av vår mobilapplikation. Denna integritetspolicy beskriver vilken typ av information vi samlar in, hur vi använder den och de åtgärder vi vidtar för att skydda dina data.</p>
+
+  <h3>1. Informationen vi inte samlar in</h3>
+  <p>Vi vill försäkra dig om att "Söderhamns Moské" inte samlar in eller lagrar några personuppgifter, kakor eller annan form av personidentifierbar information. Vi respekterar din integritet och har utformat vår applikation för att fungera utan behov av sådan data.</p>
+
+  <h3>2. Anonym användningsdata</h3>
+  <p>För att förbättra prestandan och användbarheten hos vår applikation kan vi samla in anonym användningsdata. Denna information identifierar dig inte personligen och används enbart för analytiska ändamål. Den hjälper oss att förstå hur vår app används, identifiera förbättringsområden och optimera användarupplevelsen.</p>
+
+  <h3>3. Enhetsinformation</h3>
+  <p>Vår applikation kan automatiskt samla in viss information om din enhet, såsom typ av mobil enhet du använder, enhetens unika identifierare, operativsystemversion och andra tekniska detaljer. Dessa data samlas in för att säkerställa kompatibilitet, tillhandahålla uppdateringar och åtgärda eventuella problem som kan uppstå.</p>
+
+  <h3>4. Tredjepartstjänster</h3>
+  <p>"Söderhamns Moské" integrerar inte några tredjepartstjänster, såsom analysverktyg, reklam eller sociala medieplattformar, som kan samla in användardata. Vi strävar efter att upprätthålla en säker och privat miljö för alla användare.</p>
+
+  <h3>5. Säkerhetsåtgärder</h3>
+  <p>Vi tillämpar branschstandardens säkerhetsåtgärder för att skydda dina data från obehörig åtkomst, ändring eller avslöjande. Observera dock att ingen metod för dataöverföring eller lagring är helt säker, och vi kan inte garantera absolut säkerhet.</p>
+
+  <h3>6. Ändringar av integritetspolicyn</h3>
+  <p>Vi kan uppdatera denna integritetspolicy från tid till annan. Eventuella ändringar träder i kraft omedelbart efter att den reviderade versionen har publicerats i vår applikation. Vi rekommenderar att du regelbundet granskar policyn för eventuella uppdateringar. Genom att fortsätta använda mobilapplikationen "Söderhamns Moské" godkänner du alla gjorda ändringar.</p>
+
+  <h3>7. Kontakta oss</h3>
+  <p>Om du har frågor eller funderingar angående denna integritetspolicy eller vår hantering av data, kontakta oss på [ange kontaktinformation].</p>
