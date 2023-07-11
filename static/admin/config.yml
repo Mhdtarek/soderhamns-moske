@@ -17,6 +17,7 @@ collections:
           widget: "hidden",
           default: "nyheter",
         }
-      - { label: "title", name: "title", widget: "string" }
+      - { label: "title", name: "titel", widget: "string" }
+      - { label: "created", name: "skapat", widget: "string" }
       - { label: "date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }

@@ -24,8 +24,8 @@
       <nav>
         <h5 style="text-align: center; display: block;">Söderhamns Moské</h5>
         <div class="max"></div>
-        <a href="/app/om" class="circle transparent">
-          <i>info</i>
+        <a href="/app/kontakt" class="circle transparent">
+          <i>phone</i>
         </a>
       </nav>
     </div>

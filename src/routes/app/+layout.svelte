@@ -3,12 +3,17 @@
 </svelte:head>
 <div class="wrapper">
   <slot />
+  <br>
+  <br>
+  <br>
+  <br>
   <nav class="tertiary-container green4">
     <a class="transparent square round extra" href="/app">
       <i>home</i>
     </a>
 
     <div class="max" />
+
     <a class="transparent square round extra" href="/app/bonetider">
       <i>mosque</i>
     </a>
@@ -18,13 +23,17 @@
     <a class="transparent square round extra" href="/app/donera">
       <i>volunteer_activism</i>
     </a>
+    <a class="transparent square round extra" href="/app/kontakt">
+      <i>phone</i>
+    </a>
   </nav>
 </div>
 
 <style>
-  .wrapper {
-    height: 100vh;
-    position: relative;
+  .respon {
+    width:-webkit-fill-available;
+    width:-moz-available;
+    width:stretch
   }
   nav {
     position: fixed;

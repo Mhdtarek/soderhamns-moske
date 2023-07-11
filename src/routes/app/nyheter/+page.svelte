@@ -35,9 +35,11 @@
     <img class="responsive medium" src="/mosquenews.png"><!----><!---->
     <div class="absolute bottom left right padding bottom-shadow white-text">
       <nav>
-        <div class="max"></div>
         <h5 style="text-align: center; display: block;">Nyheter</h5>
         <div class="max"></div>
+        <a href="/app/kontakt" class="circle transparent">
+          <i>phone</i>
+        </a>
       </nav>
     </div>
   </article>

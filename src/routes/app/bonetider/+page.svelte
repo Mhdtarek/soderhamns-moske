@@ -84,9 +84,11 @@ import { forEachChild } from "typescript";
     <img class="responsive medium" src="/prayermosque.png"><!----><!---->
     <div class="absolute bottom left right padding bottom-shadow white-text">
       <nav>
-        <div class="max"></div>
         <h5 style="text-align: center; display: block;">Bönetider</h5>
         <div class="max"></div>
+        <a href="/app/kontakt" class="circle transparent">
+          <i>phone</i>
+        </a>
       </nav>
     </div>
   </article>
@@ -241,8 +243,4 @@ import { forEachChild } from "typescript";
       </tbody>
     </table>
   </article>
-  <br>
-  <br>
-  <br>
-  <br>
 </main>
