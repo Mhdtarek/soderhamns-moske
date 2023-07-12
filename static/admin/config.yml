@@ -18,6 +18,6 @@ collections:
           default: "nyheter",
         }
       - { label: "title", name: "titel", widget: "string" }
-      - { label: "created", name: "skapat av", widget: "string" }
-      - { label: "date", name: "date", widget: "datetime" }
+      - { label: "created", name: "Skapat av", widget: "string" }
+      - { label: "date", name: "Datum", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
