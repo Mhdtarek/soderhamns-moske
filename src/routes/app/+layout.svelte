@@ -8,12 +8,10 @@
   <br>
   <br>
   <nav class="tertiary-container green4">
+    <div class="max" />
     <a class="transparent square round extra" href="/app">
       <i>home</i>
     </a>
-
-    <div class="max" />
-
     <a class="transparent square round extra" href="/app/bonetider">
       <i>mosque</i>
     </a>
@@ -26,6 +24,7 @@
     <a class="transparent square round extra" href="/app/kontakt">
       <i>phone</i>
     </a>
+    <div class="max" />
   </nav>
 </div>
 
@@ -39,7 +38,7 @@
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     left: 0;
     right: 0;
     padding: 0 20px;
