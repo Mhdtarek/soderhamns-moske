@@ -17,7 +17,7 @@ collections:
           widget: "hidden",
           default: "nyheter",
         }
-      - { label: "title", name: "titel", widget: "string" }
-      - { label: "created", name: "Skapat av", widget: "string" }
-      - { label: "date", name: "Datum", widget: "datetime" }
+      - { label: "title", name: "title", widget: "string" }
+      - { label: "created", name: "created by", widget: "string" }
+      - { label: "date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
