@@ -54,5 +54,8 @@
         {formatDate(post.meta.date)}
       </article >
     {/each}
+  {#if posts.length === 0}
+    <p>Inga nyheter finns.</p>
+  {/if}
   </div>
 </main>

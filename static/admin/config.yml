@@ -19,6 +19,6 @@ collections:
           default: "nyheter",
         }
       - { label: "title", name: "title", widget: "string" }
-      - { label: "created", name: "created by", widget: "string" }
+      - { label: "created", name: "created", widget: "string" }
       - { label: "date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
