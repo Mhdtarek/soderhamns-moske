@@ -4,5 +4,5 @@ created: Tarek
 date: 2023-07-21T09:48:33.156Z
 created by: Tarek
 ---
-Jdk
+Test
 # اليوم صلاة الجمعة
