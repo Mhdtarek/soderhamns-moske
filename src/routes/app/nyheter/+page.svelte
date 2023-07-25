@@ -1,6 +1,9 @@
 <script>
     import { onMount } from "svelte";
 
+  /**
+* @type {string | any[]}
+*/
   let posts = []
   onMount(async () => {
     fetch("/api/getNewsPosts")
@@ -26,6 +29,7 @@
     hour12: false,
     timeZone: "Europe/Stockholm"
   };
+  // @ts-ignore
   return date.toLocaleString("sv-SE", options);
 }
 
