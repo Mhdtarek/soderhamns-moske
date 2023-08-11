@@ -31,7 +31,7 @@
     </div>
   </article>
   {#if prayerTimes != {}}
-    <article class="card green7" style="overflow: scroll;">
+    <article class="card green5" style="overflow: scroll;">
       <table class="border large-space" style="overflow-x: scroll;">
         <thead>
           <tr>

@@ -99,7 +99,7 @@ import { forEachChild } from "typescript";
   </div>
   
   <div class="page" id="page1">
-    <article class="card green7" style="overflow: scroll;">
+    <article class="card green5" style="overflow: scroll;">
       Datum: {yesterdayPrayerTimes.Dat}  
       <table class="border large-space" style="overflow-x: scroll;">
         <thead>
@@ -134,7 +134,7 @@ import { forEachChild } from "typescript";
     </article>
   </div>
   <div class="page active" id="page2">
-    <article class="card green7" style="overflow: scroll;">
+    <article class="card green5" style="overflow: scroll;">
       Datum: {todayPrayerTimes.Dat}
       <table class="border large-space" style="overflow-x: scroll;">
         <thead>
@@ -169,7 +169,7 @@ import { forEachChild } from "typescript";
     </article>
   </div>
   <div class="page" id="page3">
-    <article class="card green7" style="overflow: scroll;">
+    <article class="card green5" style="overflow: scroll;">
       Datum: {tommorowPrayerTimes.Dat}
       <table class="border large-space" style="overflow-x: scroll;">
         <thead>
@@ -205,7 +205,7 @@ import { forEachChild } from "typescript";
   </div>
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
-  <article class="card green7" style="overflow: scroll;">
+  <article class="card green5" style="overflow: scroll;">
     <table class="border large-space" style="overflow-x: scroll;">
       <thead>
         <tr>
