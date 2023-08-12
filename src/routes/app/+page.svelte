@@ -53,8 +53,8 @@
             <th>{prayerTimes.Asr}</th>
           </tr>
           <tr>
-            <th>Magrib</th>
-            <th>{prayerTimes.Magrib}</th>
+            <th>Maghrib</th>
+            <th>{prayerTimes.Maghrib}</th>
           </tr>
           <tr>  
             <th>Isha</th>

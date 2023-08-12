@@ -75,14 +75,14 @@ export function GET({ url, params }) {
     ctx.fillText("Shuruk", tableWidth * 0.45, headerHeight * 1.5);
     ctx.fillText("Dhohr", tableWidth * 0.6, headerHeight * 1.5);
     ctx.fillText("Asr", tableWidth * 0.75, headerHeight * 1.5);
-    ctx.fillText("Magrib", tableWidth * 0.9, headerHeight * 1.5);
+    ctx.fillText("Maghrib", tableWidth * 0.9, headerHeight * 1.5);
 
     // Draw table rows
     ctx.fillStyle = "#f8f8f8";
     ctx.font = "12px Arial";
     dataArray.forEach(
       (
-        /** @type {{ Dat: string; Fajr: string; Shuruk: string; Dhohr: string; Asr: string; Magrib: string; }} */ data,
+        /** @type {{ Dat: string; Fajr: string; Shuruk: string; Dhohr: string; Asr: string; Maghrib: string; }} */ data,
         /** @type {number} */ index
       ) => {
         const rowY = (index + 2) * 50;
@@ -94,7 +94,7 @@ export function GET({ url, params }) {
         ctx.fillText(data.Shuruk, tableWidth * 0.45, rowY + 25);
         ctx.fillText(data.Dhohr, tableWidth * 0.6, rowY + 25);
         ctx.fillText(data.Asr, tableWidth * 0.75, rowY + 25);
-        ctx.fillText(data.Magrib, tableWidth * 0.9, rowY + 25);
+        ctx.fillText(data.Maghrib, tableWidth * 0.9, rowY + 25);
       }
     );
 

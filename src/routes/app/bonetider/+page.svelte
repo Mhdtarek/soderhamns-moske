@@ -122,8 +122,8 @@ import { forEachChild } from "typescript";
             <th>{yesterdayPrayerTimes.Asr}</th>
           </tr>
           <tr>
-            <th>Magrib</th>
-            <th>{yesterdayPrayerTimes.Magrib}</th>
+            <th>Maghrib</th>
+            <th>{yesterdayPrayerTimes.Maghrib}</th>
           </tr>
           <tr>
             <th>Isha</th>
@@ -157,8 +157,8 @@ import { forEachChild } from "typescript";
             <th>{todayPrayerTimes.Asr}</th>
           </tr>
           <tr>
-            <th>Magrib</th>
-            <th>{todayPrayerTimes.Magrib}</th>
+            <th>Maghrib</th>
+            <th>{todayPrayerTimes.Maghrib}</th>
           </tr>
           <tr>
             <th>Isha</th>
@@ -192,8 +192,8 @@ import { forEachChild } from "typescript";
             <th>{tommorowPrayerTimes.Asr}</th>
           </tr>
           <tr>
-            <th>Magrib</th>
-            <th>{tommorowPrayerTimes.Magrib}</th>
+            <th>Maghrib</th>
+            <th>{tommorowPrayerTimes.Maghrib}</th>
           </tr>
           <tr>
             <th>Isha</th>
@@ -213,7 +213,7 @@ import { forEachChild } from "typescript";
           <th>Fajr</th>
           <th>Dhohr</th>
           <th>Asr</th>
-          <th>Magrib</th>
+          <th>Maghrib</th>
           <th>Isha</th>
         </tr>
       </thead>
@@ -233,7 +233,7 @@ import { forEachChild } from "typescript";
               {dailyPrayerTimes.Asr}
             </th>
             <th>
-              {dailyPrayerTimes.Magrib}
+              {dailyPrayerTimes.Maghrib}
             </th>
             <th>
               {dailyPrayerTimes.Isha}
