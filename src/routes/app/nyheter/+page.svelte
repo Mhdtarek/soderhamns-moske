@@ -50,11 +50,11 @@
   <div class="grid large-space">
     {#each posts as post}
       <article class="s6" style="margin-top: 0;">
-        <h2>
+        <h5>
           <a href={post.path}>
             {post.meta.title}
           </a>
-        </h2>
+        </h5>
         {formatDate(post.meta.date)}
       </article >
     {/each}
