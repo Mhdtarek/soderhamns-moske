@@ -45,6 +45,10 @@
             <th>{prayerTimes.Fajr}</th>
           </tr>
           <tr>
+            <th>Shuruk</th>
+            <th>{prayerTimes.Shuruk}</th>
+          </tr>
+          <tr>
             <th>Dhohr</th>
             <th>{prayerTimes.Dhohr}</th>
           </tr>
