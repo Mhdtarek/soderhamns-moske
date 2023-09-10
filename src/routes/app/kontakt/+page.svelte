@@ -4,9 +4,9 @@
       Kontakta oss
     </h1>
     <strong>För Nyheter:</strong>
-    <p>  telefon nummer: 073-740 32 13</p>
+    <p>  Telefon nummer: 073-740 32 13</p>
     <strong>För App:</strong>
-    <p>  telefon nummer: 073-746 16 76</p>
+    <p>  Telefon nummer: 073-746 16 76</p>
   </article>
 </main>
 <style>
