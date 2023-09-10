@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-import { forEachChild } from "typescript";
+  import PrayerTimes from "../../../components/PrayerTimes.svelte";
   let yesterdayPrayerTimes = {}
   let todayPrayerTimes = {}
   let tommorowPrayerTimes = {}
@@ -99,121 +99,13 @@ import { forEachChild } from "typescript";
   </div>
   
   <div class="page" id="page1">
-    <article class="card green5" style="overflow: scroll;">
-      Datum: {yesterdayPrayerTimes.Dat}  
-      <table class="border large-space" style="overflow-x: scroll;">
-        <thead>
-          <tr>
-            <th>Bön</th>
-            <th>Tid</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Fajr</th>
-            <th>{yesterdayPrayerTimes.Fajr}</th>
-          </tr>
-          <tr>
-            <th>Shuruk</th>
-            <th>{yesterdayPrayerTimes.Shuruk}</th>
-          </tr>
-          <tr>
-            <th>Dhohr</th>
-            <th>{yesterdayPrayerTimes.Dhohr}</th>
-          </tr>
-          <tr>
-            <th>Asr</th>
-            <th>{yesterdayPrayerTimes.Asr}</th>
-          </tr>
-          <tr>
-            <th>Maghrib</th>
-            <th>{yesterdayPrayerTimes.Maghrib}</th>
-          </tr>
-          <tr>
-            <th>Isha</th>
-            <th>{yesterdayPrayerTimes.Isha}</th>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+    <PrayerTimes PrayerTimes={yesterdayPrayerTimes} />
   </div>
   <div class="page active" id="page2">
-    <article class="card green5" style="overflow: scroll;">
-      Datum: {todayPrayerTimes.Dat}
-      <table class="border large-space" style="overflow-x: scroll;">
-        <thead>
-          <tr>
-            <th>Bön</th>
-            <th>Tid</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Fajr</th>
-            <th>{todayPrayerTimes.Fajr}</th>
-          </tr>
-          <tr>
-            <th>Shuruk</th>
-            <th>{todayPrayerTimes.Shuruk}</th>
-          </tr>
-          <tr>
-            <th>Dhohr</th>
-            <th>{todayPrayerTimes.Dhohr}</th>
-          </tr>
-          <tr>
-            <th>Asr</th>
-            <th>{todayPrayerTimes.Asr}</th>
-          </tr>
-          <tr>
-            <th>Maghrib</th>
-            <th>{todayPrayerTimes.Maghrib}</th>
-          </tr>
-          <tr>
-            <th>Isha</th>
-            <th>{todayPrayerTimes.Isha}</th>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+    <PrayerTimes PrayerTimes={todayPrayerTimes} />
   </div>
   <div class="page" id="page3">
-    <article class="card green5" style="overflow: scroll;">
-      Datum: {tommorowPrayerTimes.Dat}
-      <table class="border large-space" style="overflow-x: scroll;">
-        <thead>
-          <tr>
-            <th>Bön</th>
-            <th>Tid</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Fajr</th>
-            <th>{tommorowPrayerTimes.Fajr}</th>
-          </tr>
-          <tr>
-            <th>Shuruk</th>
-            <th>{tommorowPrayerTimes.Shuruk}</th>
-          </tr>
-          <tr>
-            <th>Dhohr</th>
-            <th>{tommorowPrayerTimes.Dhohr}</th>
-          </tr>
-          <tr>
-            <th>Asr</th>
-            <th>{tommorowPrayerTimes.Asr}</th>
-          </tr>
-          <tr>
-            <th>Maghrib</th>
-            <th>{tommorowPrayerTimes.Maghrib}</th>
-          </tr>
-          <tr>
-            <th>Isha</th>
-            <th>{tommorowPrayerTimes.Isha}</th>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+    <PrayerTimes PrayerTimes={tommorowPrayerTimes} />
   </div>
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
@@ -260,3 +152,9 @@ import { forEachChild } from "typescript";
     </table>
   </article>
 </main>
+<style>
+  .tabs>a.active {
+    color: rgb(56, 142, 60);
+    border-bottom: 0.125rem solid rgb(56, 142, 60)
+  }
+</style>
