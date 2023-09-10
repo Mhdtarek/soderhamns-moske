@@ -8,6 +8,7 @@
     <strong>För App:</strong>
     <p>  telefon nummer: 073-746 16 76</p>
   </article>
+  <a href="/temp" class="button">TEMPORÄR KNAPP</a>
 </main>
 <style>
   main {

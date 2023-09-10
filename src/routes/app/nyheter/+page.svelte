@@ -46,14 +46,16 @@
   </article>
   <div class="grid large-space">
     {#each posts as post}
-      <article class="s6" style="margin-top: 0;">
+    <article class="s6" style="margin-top: 0;">
+    <a href={post.path} style="display: block;">
         <h5>
-          <a href={post.path}>
-            {post.meta.title}
-          </a>
+          {post.meta.title}
         </h5>
-        {formatDate(post.meta.date)}
-      </article >
+        <p style="display:block">
+          {formatDate(post.meta.date)}
+        </p>
+      </a>
+    </article >
     {/each}
   {#if posts.length === 0}
     <p>Inga nyheter finns.</p>
