@@ -17,34 +17,31 @@ export const monthToJsonFile = [
 /**
  * @param {{ [x: string]: any; }} prayerTimes
  */
-export function getNextPrayerTime(prayerData) {
-  const now = new Date();
-  const today = now.getDate();
-  const times = Object.entries(prayerData).filter(
-    ([key, value]) => key !== "Dat"
-  );
-  const todayTimes = times.map(([key, value]) => {
-    const [hour, minute] = value.split(":");
-    return new Date(now.getFullYear(), now.getMonth(), today, hour, minute);
+export function getNextPrayerTime(obj) {
+  let now = new Date();
+  let times = Object.entries(obj).map(([key, time]) => {
+    let [hours, minutes] = time.split(":");
+    let date = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      hours,
+      minutes
+    );
+    return { key, date };
   });
-  const nextPrayerTime = todayTimes.find((time) => time > now);
-  if (nextPrayerTime) {
-    return nextPrayerTime.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+
+  times.sort((a, b) => a.date - b.date);
+
+  let nextTimeObj = times.find((timeObj) => timeObj.date >= now);
+
+  if (nextTimeObj) {
+    let hours = nextTimeObj.date.getHours().toString().padStart(2, "0");
+    let minutes = nextTimeObj.date.getMinutes().toString().padStart(2, "0");
+    return { prayer: nextTimeObj.key, time: `${hours}:${minutes}` };
   } else {
-    const tomorrowTimes = times.map(([key, value]) => {
-      const [hour, minute] = value.split(":");
-      return new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        today + 1,
-        hour,
-        minute
-      );
-    });
-    return tomorrowTimes[0];
+    // If there's no next time, you can handle it accordingly, e.g., return null.
+    return obj.fajr;
   }
 }
 

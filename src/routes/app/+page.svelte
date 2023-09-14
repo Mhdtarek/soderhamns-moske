@@ -16,6 +16,7 @@
         console.log(error);
       });
   });
+  
 </script>
 
 <main class="responsive">
