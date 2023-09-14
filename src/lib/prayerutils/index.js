@@ -17,42 +17,35 @@ export const monthToJsonFile = [
 /**
  * @param {{ [x: string]: any; }} prayerTimes
  */
-export function getClosestPrayerTime(prayerTimes) {
-  // Get the current date and time
-  const currentDate = new Date();
-  const currentHour = currentDate.getHours();
-  const currentMinute = currentDate.getMinutes();
-
-  // Convert the current time to minutes for comparison
-  const currentTimeInMinutes = currentHour * 60 + currentMinute;
-
-  // Initialize variables for the closest prayer time
-  let closestPrayerTime = "";
-  let closestPrayerName = "";
-  let closestTimeDiff = Infinity;
-
-  // Iterate through the prayer times and find the closest one
-  for (const prayer in prayerTimes) {
-    if (prayer !== "Dat") {
-      const prayerName = prayer;
-      const prayerTime = prayerTimes[prayer];
-      const [prayerHour, prayerMinute] = prayerTime.split(":");
-      const prayerTimeInMinutes =
-        parseInt(prayerHour) * 60 + parseInt(prayerMinute);
-
-      const timeDiff = Math.abs(prayerTimeInMinutes - currentTimeInMinutes);
-      if (timeDiff < closestTimeDiff) {
-        closestTimeDiff = timeDiff;
-        closestPrayerTime = prayerTime;
-        closestPrayerName = prayerName;
-      }
-    }
+export function getNextPrayerTime(prayerData) {
+  const now = new Date();
+  const today = now.getDate();
+  const times = Object.entries(prayerData).filter(
+    ([key, value]) => key !== "Dat"
+  );
+  const todayTimes = times.map(([key, value]) => {
+    const [hour, minute] = value.split(":");
+    return new Date(now.getFullYear(), now.getMonth(), today, hour, minute);
+  });
+  const nextPrayerTime = todayTimes.find((time) => time > now);
+  if (nextPrayerTime) {
+    return nextPrayerTime.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } else {
+    const tomorrowTimes = times.map(([key, value]) => {
+      const [hour, minute] = value.split(":");
+      return new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        today + 1,
+        hour,
+        minute
+      );
+    });
+    return tomorrowTimes[0];
   }
-
-  return {
-    prayerTime: closestPrayerTime,
-    prayerName: closestPrayerName,
-  };
 }
 
 /**
