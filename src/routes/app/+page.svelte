@@ -32,6 +32,7 @@
       </nav>
     </div>
   </article>
+  <CurrentPrayerTime />
   {#if prayerTimes != {}}
     <article class="card green5" style="overflow: scroll;">
       <table class="border large-space" style="overflow-x: scroll;">

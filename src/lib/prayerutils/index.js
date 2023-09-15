@@ -17,32 +17,31 @@ export const monthToJsonFile = [
 /**
  * @param {{ [x: string]: any; }} prayerTimes
  */
-export function getNextPrayerTime(obj) {
-  let now = new Date();
-  let times = Object.entries(obj).map(([key, time]) => {
-    let [hours, minutes] = time.split(":");
-    let date = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      hours,
-      minutes
-    );
-    return { key, date };
-  });
+export function getNextPrayerTime(timeObject) {
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  const currentMinute = currentTime.getMinutes();
+  const currentFormattedTime = `${currentHour
+    .toString()
+    .padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
 
-  times.sort((a, b) => a.date - b.date);
+  const timesArray = Object.values(timeObject).sort();
 
-  let nextTimeObj = times.find((timeObj) => timeObj.date >= now);
-
-  if (nextTimeObj) {
-    let hours = nextTimeObj.date.getHours().toString().padStart(2, "0");
-    let minutes = nextTimeObj.date.getMinutes().toString().padStart(2, "0");
-    return { prayer: nextTimeObj.key, time: `${hours}:${minutes}` };
-  } else {
-    // If there's no next time, you can handle it accordingly, e.g., return null.
-    return obj.fajr;
+  for (let i = 0; i < timesArray.length; i++) {
+    if (timesArray[i] >= currentFormattedTime) {
+      // Find the corresponding key for the next time
+      const nextTime = timesArray[i];
+      const nextTimeKey = Object.keys(timeObject).find(
+        (key) => timeObject[key] === nextTime
+      );
+      return { key: nextTimeKey, time: nextTime };
+    }
   }
+
+  // If there is no next time, return the first time in the object
+  const firstTimeKey = Object.keys(timeObject)[0];
+  const firstTime = timesArray[0];
+  return { key: firstTimeKey, time: firstTime };
 }
 
 /**
