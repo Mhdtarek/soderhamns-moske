@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import CurrentPrayerTime from "../../components/currentPrayerTime.svelte";
+import PrayerTimes from "../../components/PrayerTimes.svelte";
 
   let prayerTimes = {};
 
@@ -32,45 +32,9 @@
       </nav>
     </div>
   </article>
-  {#if prayerTimes != {}}
-    <article class="card green5" style="overflow: scroll;">
-      <table class="border large-space" style="overflow-x: scroll;">
-        <thead>
-          <tr>
-            <th>Bön</th>
-            <th>Tid</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Fajr</th>
-            <th>{prayerTimes.Fajr}</th>
-          </tr>
-          <tr>
-            <th>Shuruk</th>
-            <th>{prayerTimes.Shuruk}</th>
-          </tr>
-          <tr>
-            <th>Dhohr</th>
-            <th>{prayerTimes.Dhohr}</th>
-          </tr>
-          <tr>
-            <th>Asr</th>
-            <th>{prayerTimes.Asr}</th>
-          </tr>
-          <tr>
-            <th>Maghrib</th>
-            <th>{prayerTimes.Maghrib}</th>
-          </tr>
-          <tr>  
-            <th>Isha</th>
-            <th>{prayerTimes.Isha}</th>
-          </tr>
-        </tbody>
-      </table>
-      <a href="app/bonetider" style="margin-top: 10px;">Se mer tider</a>
-    </article>
-      {/if}
+    {#if prayerTimes != {}}
+      <PrayerTimes PrayerTimes={prayerTimes} ></PrayerTimes>
+    {/if}
     </main>
     <style>
       table {
