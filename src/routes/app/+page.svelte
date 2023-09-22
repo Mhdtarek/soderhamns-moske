@@ -1,22 +1,8 @@
 <script>
-  import { onMount } from "svelte";
-import PrayerTimes from "../../components/PrayerTimes.svelte";
+  import PrayerTimes from "../../components/PrayerTimes.svelte";
+  export let data = {}
+  let prayerTimes = data.res
 
-  let prayerTimes = {};
-
-  onMount(async () => {
-    fetch("/api/getTodayPrayerTimes")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        prayerTimes = data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
-  
 </script>
 
 <main class="responsive">
