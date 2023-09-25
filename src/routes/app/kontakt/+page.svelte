@@ -8,6 +8,7 @@
     <strong>För App:</strong>
     <p>  Telefon nummer: 073-746 16 76</p>
   </article>
+  <a class="button" href="/admin">Gå till admin panel</a>
 </main>
 <style>
   main {
