@@ -2,7 +2,9 @@
 import { isLarger } from "$lib/stores";
 
 let isTextChecked = false
-$: isLarger.set(isTextChecked)
+if (isTextChecked) {
+  $: isLarger.set(isTextChecked)
+}
 $: localStorage.setItem("isTextChecked", isTextChecked.toString());
 </script>
 <main>
@@ -33,8 +35,8 @@ main {
   place-items: center;
 }
 article {
-  height: 60vh;
-  width: 40vw;
+  height: 80vh;
+  width: 95vw;
 }
 h1 {
   text-align: center;
