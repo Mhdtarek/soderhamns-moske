@@ -1,6 +1,6 @@
 ---
 layout: nyheter
-title: Nu finns det inställningar
+title: "Nytt: Inställningar"
 created: Tarek
 date: 2023-09-30T18:01
 ---
