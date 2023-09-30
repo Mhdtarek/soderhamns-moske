@@ -15,7 +15,7 @@ import { browser } from '$app/environment';
   isLarger.subscribe((value) => {
 		isLargerValue = value;
 	});
-
+  
   export let PrayerTimes = {}
 </script>
 <article class="card green5" style="overflow: scroll; --text-size: {textSizeValue}%">
@@ -55,7 +55,6 @@ import { browser } from '$app/environment';
     </tbody>
   </table>
 </article>
-
 <style>
   :root {
     --text-size: 100%;
