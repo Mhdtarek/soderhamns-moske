@@ -1,10 +1,12 @@
 <script>
+import { onMount } from 'svelte'
 import { isLarger } from "$lib/stores";
 
 let isTextChecked = false
-
-$: isLarger.set(isTextChecked)
-$: localStorage.setItem("isTextChecked", isTextChecked.toString());
+onMount( async () => {
+  $: isLarger.set(isTextChecked)
+  $: localStorage.setItem("isTextChecked", isTextChecked.toString());
+});
 </script>
 <main>
 <article>
