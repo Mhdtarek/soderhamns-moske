@@ -2,9 +2,8 @@
 import { isLarger } from "$lib/stores";
 
 let isTextChecked = false
-if (Boolean(isTextChecked)) {
-  $: isLarger.set(isTextChecked)
-}
+
+$: isLarger.set(isTextChecked)
 $: localStorage.setItem("isTextChecked", isTextChecked.toString());
 </script>
 <main>
