@@ -11,10 +11,6 @@ import { browser } from '$app/environment';
   isLarger.subscribe((value) => {
 		isLargerValue = value;
 	});
-  if (browser) {
-
-    $: isLarger.set(Boolean(localStorage.getItem("isTextChecked")))
-  }
 </script>
 
 <div class="wrapper" class:text-150={isLargerValue} style="--text-size: {textSizeValue}%">
@@ -45,10 +41,7 @@ import { browser } from '$app/environment';
           <i>phone</i>
           <span>Kontakta</span>
         </a>
-        <a href="/app/installningar" class="row">
-          <i>settings</i>
-          <span>Inställningar</span>
-        </a>
+
       </menu>
     </button>
     <div class="max" />
