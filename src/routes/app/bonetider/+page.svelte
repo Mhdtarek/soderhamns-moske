@@ -1,6 +1,24 @@
 <script>
   import { onMount } from "svelte";
   import PrayerTimes from "../../../components/PrayerTimes.svelte";
+
+  import { size, textSize, isLarger } from "$lib/stores";
+  import { browser } from '$app/environment'; 
+
+  let sizeValue = ""
+  let textSizeValue = 100
+  let isLargerValue = false
+
+  size.subscribe((value) => {
+		sizeValue = value;
+	});
+  textSize.subscribe((value) => {
+		textSizeValue = value;
+	});
+  isLarger.subscribe((value) => {
+		isLargerValue = value;
+	});
+
   let yesterdayPrayerTimes = {}
   let todayPrayerTimes = {}
   let tommorowPrayerTimes = {}
@@ -110,40 +128,40 @@
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green5" style="overflow: scroll;">
-    <table class="border large-space" style="overflow-x: scroll;">
+    <table class="border large-space" style="overflow-x: scroll; --text-size: {textSizeValue}%">
       <thead>
         <tr>
-          <th>Datum</th>
-          <th>Fajr</th>
-          <th>Shuruk</th>
-          <th>Dhohr</th>
-          <th>Asr</th>
-          <th>Maghrib</th>
-          <th>Isha</th>
+          <th class:larger={isLargerValue}>Datum</th>
+          <th class:larger={isLargerValue}>Fajr</th>
+          <th class:larger={isLargerValue}>Shuruk</th>
+          <th class:larger={isLargerValue}>Dhohr</th>
+          <th class:larger={isLargerValue}>Asr</th>
+          <th class:larger={isLargerValue}>Maghrib</th>
+          <th class:larger={isLargerValue}>Isha</th>
         </tr>
       </thead>
       <tbody>
         {#each monthlyPrayerTimes as dailyPrayerTimes}
           <tr>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Dat}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Fajr}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Shuruk}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Dhohr}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Asr}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Maghrib}
             </th>
-            <th>
+            <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Isha}
             </th>
           </tr>
@@ -156,5 +174,8 @@
   .tabs>a.active {
     color: rgb(56, 142, 60);
     border-bottom: 0.125rem solid rgb(56, 142, 60)
+  }
+  .larger {
+    font-size: var(--text-size)
   }
 </style>

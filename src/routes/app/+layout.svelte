@@ -1,7 +1,23 @@
-<svelte:head>
-  
-</svelte:head>
-<div class="wrapper">
+<script>
+import { size, textSize, isLarger } from "$lib/stores";
+import { browser } from '$app/environment'; 
+
+  let textSizeValue = 100
+  let isLargerValue = false
+
+  textSize.subscribe((value) => {
+		textSizeValue = value;
+	});
+  isLarger.subscribe((value) => {
+		isLargerValue = value;
+	});
+  if (browser) {
+
+    $: isLarger.set(Boolean(localStorage.getItem("isTextChecked")))
+  }
+</script>
+
+<div class="wrapper" class:text-150={isLargerValue} style="--text-size: {textSizeValue}%">
   <slot />
   <br>
   <br>
@@ -9,16 +25,16 @@
   <br>
   <nav class="tertiary-container green3">
     <div class="max" />
-    <a class="button square round green8" href="/app">
+    <a class="button square round green8" class:large={isLargerValue} href="/app">
       <i>home</i>
     </a>
-    <a class="button square round green8" href="/app/bonetider">
+    <a class="button square round green8" class:large={isLargerValue} href="/app/bonetider">
       <i>mosque</i>
     </a>
-    <a class="button square round green8" href="/app/nyheter">
+    <a class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
       <i>newspaper</i>
     </a>
-    <button class="button square round green8">
+    <button class="button square round green8" class:large={isLargerValue}>
       <i>arrow_drop_up</i>
       <menu class="no-wrap drop-up-menu dark">
         <a href="/app/donera" class="row">
@@ -29,6 +45,10 @@
           <i>phone</i>
           <span>Kontakta</span>
         </a>
+        <a href="/app/installningar" class="row">
+          <i>settings</i>
+          <span>Inställningar</span>
+        </a>
       </menu>
     </button>
     <div class="max" />
@@ -36,6 +56,10 @@
 </div>
 
 <style>
+  :root {
+    --text-size: 100%
+  }
+
   .respon {
     width:-webkit-fill-available;
     width:-moz-available;
@@ -60,5 +84,10 @@
 .drop-up-menu a:hover {
   background-color: #f0f0f0;
 }
+.text-150 {
+  font-size: var(--text-size)
+}
+table {
 
+}
 </style>
