@@ -13,7 +13,7 @@ import { browser } from '$app/environment';
 	});
   
   if (browser) {
-    $: isLarger.set(Boolean(localStorage.getItem("isTextChecked")))
+      $: isLarger.set(Boolean(localStorage.getItem("isTextChecked")))
   }
 </script>
 
