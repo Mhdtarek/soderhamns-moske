@@ -3,6 +3,22 @@ import PrayerTimes from "../components/PrayerTimes.svelte";
 
 export let data = {}
 </script>
+
+<svelte:head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ladda ned Söderhamns Moske app">
+  <meta name="keywords" content="Söderhamns Moske, app, ladda ned">
+  <meta name="author" content="Söderhamns Islamiska Kultur Förening">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Söderhamns Moske">
+  <meta property="og:description" content="Ladda ned Söderhamns Moske app">
+  <meta property="og:image" content="/mosque.png"> <!-- Ersätt med den faktiska bildens URL -->
+  <meta property="og:url" content="https://soderhamns-moske.netlify.app">
+  <meta property="og:type" content="website">
+  <title>Ladda ned Söderhamns Moske Appen</title>
+</svelte:head>
+
 <main class="green3">
   <div class="container">
     <main class="responsive">
