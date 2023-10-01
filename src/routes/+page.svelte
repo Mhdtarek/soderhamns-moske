@@ -17,7 +17,7 @@ export let data = {}
       </article>
       <section style="display: grid; align-items: center; margin-top: 50px">
         <a href="https://play.google.com/store/apps/details?id=mhdtarek.soderhamnmoske" class="button green10 button large">Ladda ned</a>
-        <a href="https://soderhamns-moske.netlify.app/privacy-policy">integritetspolicy</a>
+        <a href="https://soderhamns-moske.netlify.app/privacy-policy" class="underline">integritetspolicy</a>
       </section>
       <PrayerTimes PrayerTimes={data.prayerTimes}/>
     </main>
