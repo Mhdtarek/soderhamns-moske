@@ -22,7 +22,7 @@
   <p>We may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting the revised version in our application. We encourage you to review this policy periodically for any updates. Your continued use of the "Söderhamns Moské" mobile application constitutes your acceptance of any changes made.</p>
 
   <h3>7. Contact Us</h3>
-  <p>If you have any questions or concerns regarding this Privacy Policy or our data practices, please contact us at [insert contact information].</p>
+  <p>If you have any questions or concerns regarding this Privacy Policy or our data practices, please contact us at [0737461676].</p>
 
   <p>By using the "Söderhamns Moské" mobile application, you acknowledge that you have read and understood this Privacy Policy and agree to the collection, use, and disclosure of your information as described herein.</p>
 <h1>SvenskIntegritetspolicy för mobilapplikationen "Söderhamns Moské"</h1>
@@ -50,4 +50,4 @@
   <p>Vi kan uppdatera denna integritetspolicy från tid till annan. Eventuella ändringar träder i kraft omedelbart efter att den reviderade versionen har publicerats i vår applikation. Vi rekommenderar att du regelbundet granskar policyn för eventuella uppdateringar. Genom att fortsätta använda mobilapplikationen "Söderhamns Moské" godkänner du alla gjorda ändringar.</p>
 
   <h3>7. Kontakta oss</h3>
-  <p>Om du har frågor eller funderingar angående denna integritetspolicy eller vår hantering av data, kontakta oss på [ange kontaktinformation].</p>
+  <p>Om du har frågor eller funderingar angående denna integritetspolicy eller vår hantering av data, kontakta oss på [0737461676].</p>
