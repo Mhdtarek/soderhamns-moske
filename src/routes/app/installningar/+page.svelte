@@ -43,7 +43,7 @@
   </div>
   {#if isTextChecked}
     <div style="margin-top: 20px;">
-      yes
+      Aktiverat!
     </div>
   {/if}
 </article>
