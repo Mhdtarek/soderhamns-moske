@@ -4,9 +4,9 @@ import { isLarger } from "$lib/stores";
 
 let isTextChecked = false
 onMount( async () => {
-  $: isLarger.set(isTextChecked)
   $: localStorage.setItem("isTextChecked", isTextChecked.toString());
 });
+$: isLarger.set(isTextChecked)
 </script>
 <main>
 <article>
