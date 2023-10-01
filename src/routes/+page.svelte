@@ -16,7 +16,7 @@ export let data = {}
         </div>
       </article>
       <section style="display: grid; align-items: center; margin-top: 50px">
-        <a href="app-download-link" class="button green10 button large">Ladda ned</a>
+        <a href="https://play.google.com/store/apps/details?id=mhdtarek.soderhamnmoske" class="button green10 button large">Ladda ned</a>
       </section>
       <PrayerTimes PrayerTimes={data.prayerTimes}/>
     </main>
