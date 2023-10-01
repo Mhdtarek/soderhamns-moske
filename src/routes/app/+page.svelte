@@ -17,7 +17,9 @@ function formatDate(dateString) {
   return date.toLocaleString("sv-SE", options);
 }
 </script>
-
+<svelte:head>
+  <title>APP | STARTSIDA</title>
+</svelte:head>
 <main class="responsive">
   <article class="no-padding border primary-container">
     <img class="responsive medium" src="/mosque.png"><!----><!---->

@@ -14,6 +14,9 @@
   return date.toLocaleString("sv-SE", options);
 }
 </script>
+<svelte:head>
+  <title>APP | NYHET: {data.title}</title>
+</svelte:head>
 <main class=responsive>
   <article>
     <h3>{ data.title }</h3>

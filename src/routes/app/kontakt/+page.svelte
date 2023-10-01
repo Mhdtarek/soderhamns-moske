@@ -1,3 +1,6 @@
+<svelte:head>
+  <title>APP | KONTAKT</title>
+</svelte:head>
 <main>
   <article>
     <h1>

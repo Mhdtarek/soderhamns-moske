@@ -31,6 +31,9 @@
 }
 
 </script>
+<svelte:head>
+  <title>APP | NYHETER</title>
+</svelte:head>
 <main class="responsive">
   <article class="no-padding border primary-container">
     <img class="responsive medium" src="/mosquenews.png"><!----><!---->

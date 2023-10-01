@@ -1,6 +1,9 @@
 <script>
 
 </script>
+<svelte:head>
+  <title>APP | DONERA</title>
+</svelte:head>
 <main>
 <article>
   <h1 style="text-align: center; ">Donera</h1>

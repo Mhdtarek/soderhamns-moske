@@ -25,7 +25,9 @@
 
   $: isLarger.set(isTextChecked);
 </script>
-  
+<svelte:head>
+  <title>APP | INSTÄLLNINGAR</title>
+</svelte:head>
 <main>
 <article>
   <h1 style="text-align: center">Inställningar</h1>

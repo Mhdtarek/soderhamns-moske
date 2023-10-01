@@ -97,6 +97,9 @@
     link.click();
   }
 </script>
+<svelte:head>
+  <title>APP | BÖNETIDER</title>
+</svelte:head>
 <main class="responsive">
   <article class="no-padding border primary-container">
     <img class="responsive medium" src="/prayermosque.png"><!----><!---->
