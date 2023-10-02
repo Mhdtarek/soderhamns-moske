@@ -11,7 +11,7 @@ export let data = {}
   <meta name="keywords" content="Söderhamns Moske, app, ladda ned">
   <meta name="author" content="Söderhamns Islamiska Kultur Förening">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Söderhamns Moske">
+  <meta property="og:title" content="Ladda ned Söderhamns Moske App">
   <meta property="og:description" content="Ladda ned Söderhamns Moske app">
   <meta property="og:image" content="/mosque.png"> <!-- Ersätt med den faktiska bildens URL -->
   <meta property="og:url" content="https://soderhamns-moske.netlify.app">
