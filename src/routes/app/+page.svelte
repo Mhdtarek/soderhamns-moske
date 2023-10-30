@@ -1,5 +1,6 @@
 <script>
   import PrayerTimes from "../../components/PrayerTimes.svelte";
+
   export let data = {}
   let prayerTimes = data.res
   let post = data.newsPost

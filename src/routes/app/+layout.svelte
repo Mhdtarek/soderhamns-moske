@@ -1,6 +1,9 @@
 <script>
 import { size, textSize, isLarger } from "$lib/stores";
 import { browser } from '$app/environment'; 
+  
+  export const ssr = false;
+  export const csr = false;
 
   let textSizeValue = 100
   let isLargerValue = false
