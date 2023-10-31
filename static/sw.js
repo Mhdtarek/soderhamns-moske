@@ -1,7 +1,7 @@
 // Service Worker Script (sw.js)
 
 // Set the interval to check for prayer times and display notifications (in milliseconds)
-const notificationInterval = 1000 * 60 * 15; // 15 minutes
+const notificationInterval = 1000 * 60 * 1; // 15 minutes
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
