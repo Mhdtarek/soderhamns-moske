@@ -1,7 +1,6 @@
 <script>
 import { size, textSize, isLarger } from "$lib/stores";
 import { browser } from '$app/environment'; 
-  
   export const ssr = false;
   export const csr = false;
 
@@ -28,27 +27,27 @@ import { browser } from '$app/environment';
   <br>
   <nav class="tertiary-container green3">
     <div class="max" />
-    <a class="button square round green8" class:large={isLargerValue} href="/app">
+    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app">
       <i>home</i>
     </a>
-    <a class="button square round green8" class:large={isLargerValue} href="/app/bonetider">
+    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/bonetider">
       <i>mosque</i>
     </a>
-    <a class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
+    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
       <i>newspaper</i>
     </a>
     <button class="button square round green8" class:large={isLargerValue}>
       <i>arrow_drop_up</i>
       <menu class="no-wrap drop-up-menu dark">
-        <a href="/app/donera" class="row">
+        <a data-sveltekit-preload-data="viewport" href="/app/donera" class="row">
           <i>volunteer_activism</i>
           <span>Donera</span>
         </a>
-        <a href="/app/kontakt" class="row">
+        <a data-sveltekit-preload-data="viewport" href="/app/kontakt" class="row">
           <i>phone</i>
           <span>Kontakta</span>
         </a>
-        <a href="/app/installningar" class="row">
+        <a data-sveltekit-preload-data="viewport" href="/app/installningar" class="row">
           <i>settings</i>
           <span>Inställningar</span>
         </a>
