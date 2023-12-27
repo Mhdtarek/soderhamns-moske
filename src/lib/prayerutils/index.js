@@ -1,3 +1,9 @@
+import month1 from "./1.json";
+import month2 from "./2.json";
+import month3 from "./3.json";
+import month4 from "./4.json";
+import month5 from "./5.json";
+import month6 from "./6.json";
 import month7 from "./7.json";
 import month8 from "./8.json";
 import month9 from "./9.json";
@@ -6,6 +12,12 @@ import month11 from "./11.json";
 import month12 from "./12.json";
 
 export const monthToJsonFile = [
+  { month: "1", file: month1 },
+  { month: "2", file: month2 },
+  { month: "3", file: month3 },
+  { month: "4", file: month4 },
+  { month: "5", file: month5 },
+  { month: "6", file: month6 },
   { month: "7", file: month7 },
   { month: "8", file: month8 },
   { month: "9", file: month9 },
