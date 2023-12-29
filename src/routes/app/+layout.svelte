@@ -77,6 +77,7 @@ import { browser } from '$app/environment';
       <div>
           3. Lägg till på Hem-Skärmen <iconify-icon icon="ic:baseline-add-to-home-screen"></iconify-icon>
       </div>
+      <iframe src="https://www.youtube.com/embed/eVkQOHFSTig?modestbranding=1&rel=0&cc_load_policy=1&iv_load_policy=3&color=white&disablekb=1" width="400" height="400" title="Hur man laddar ner" frameborder="0" allowfullscreen></iframe>  
   </div>
   </div>
 {/if}
