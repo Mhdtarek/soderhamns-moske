@@ -6,6 +6,7 @@ import { browser } from '$app/environment';
 
   let textSizeValue = 100
   let isLargerValue = false
+  let isInStandalone = false
 
   textSize.subscribe((value) => {
 		textSizeValue = value;
@@ -16,48 +17,71 @@ import { browser } from '$app/environment';
   
   if (browser) {
       $: isLarger.set(Boolean(localStorage.getItem("isTextChecked")))
+
+      const isInStandaloneMode = () =>
+     (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+     
+     if (isInStandaloneMode()) {
+       isInStandalone = true
+      }
   }
 </script>
+{#if isInStandalone}
+  <div class="wrapper" class:text-150={isLargerValue} style="--text-size: {textSizeValue}%">
+    <slot />
+    <br>
+    <br>
+    <br>
+    <br>
+    <nav class="tertiary-container green3">
+      <div class="max" />
+      <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app">
+        <i>home</i>
+      </a>
+      <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/bonetider">
+        <i>mosque</i>
+      </a>
+      <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
+        <i>newspaper</i>
+      </a>
+      <button class="button square round green8" class:large={isLargerValue}>
+        <i>arrow_drop_up</i>
+        <menu class="no-wrap drop-up-menu dark">
+          <a data-sveltekit-preload-data="viewport" href="/app/donera" class="row">
+            <i>volunteer_activism</i>
+            <span>Donera</span>
+          </a>
+          <a data-sveltekit-preload-data="viewport" href="/app/kontakt" class="row">
+            <i>phone</i>
+            <span>Kontakta</span>
+          </a>
+          <a data-sveltekit-preload-data="viewport" href="/app/installningar" class="row">
+            <i>settings</i>
+            <span>Inställningar</span>
+          </a>
+        </menu>
+      </button>
+      <div class="max" />
+    </nav>
+  </div>
+  {:else}
+  <div class="wrapper green3 noInstall">
+    <h3>Instruktioner för att ladda ned</h3>
+  <div class="bold">
+      <div>
+          1. Klicka på ikonen <iconify-icon icon="material-symbols:ios-share"></iconify-icon>
+      </div>
+      <div>
+        2.  Skrolla ner och tryck
+      </div>
+      <div>
+          3. Lägg till på Hem-Skärmen <iconify-icon icon="ic:baseline-add-to-home-screen"></iconify-icon>
+      </div>
+  </div>
+  </div>
+{/if}
 
-<div class="wrapper" class:text-150={isLargerValue} style="--text-size: {textSizeValue}%">
-  <slot />
-  <br>
-  <br>
-  <br>
-  <br>
-  <nav class="tertiary-container green3">
-    <div class="max" />
-    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app">
-      <i>home</i>
-    </a>
-    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/bonetider">
-      <i>mosque</i>
-    </a>
-    <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
-      <i>newspaper</i>
-    </a>
-    <button class="button square round green8" class:large={isLargerValue}>
-      <i>arrow_drop_up</i>
-      <menu class="no-wrap drop-up-menu dark">
-        <a data-sveltekit-preload-data="viewport" href="/app/donera" class="row">
-          <i>volunteer_activism</i>
-          <span>Donera</span>
-        </a>
-        <a data-sveltekit-preload-data="viewport" href="/app/kontakt" class="row">
-          <i>phone</i>
-          <span>Kontakta</span>
-        </a>
-        <a data-sveltekit-preload-data="viewport" href="/app/installningar" class="row">
-          <i>settings</i>
-          <span>Inställningar</span>
-        </a>
-      </menu>
-    </button>
-    <div class="max" />
-  </nav>
-</div>
-
-<style>
+  <style>
   :root {
     --text-size: 100%
   }
@@ -89,7 +113,16 @@ import { browser } from '$app/environment';
 .text-150 {
   font-size: var(--text-size)
 }
-table {
-
+.noInstall {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  text-align: center;
+  display: block;
+  font-size: large;
+}
+.noInstall h3 {
+  text-align: center;
+  display: block;
 }
 </style>
