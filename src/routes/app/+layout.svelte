@@ -6,7 +6,7 @@ import { browser } from '$app/environment';
 
   let textSizeValue = 100
   let isLargerValue = false
-  let isInStandalone = false
+  let isInStandalone = true
 
   textSize.subscribe((value) => {
 		textSizeValue = value;
@@ -33,7 +33,7 @@ import { browser } from '$app/environment';
     <br>
     <br>
     <br>
-    <nav class="tertiary-container green3">
+    <nav class="tertiary-container green4">
       <div class="max" />
       <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app">
         <i>home</i>
@@ -44,23 +44,9 @@ import { browser } from '$app/environment';
       <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/nyheter">
         <i>newspaper</i>
       </a>
-      <button class="button square round green8" class:large={isLargerValue}>
-        <i>arrow_drop_up</i>
-        <menu class="no-wrap drop-up-menu dark">
-          <a data-sveltekit-preload-data="viewport" href="/app/donera" class="row">
-            <i>volunteer_activism</i>
-            <span>Donera</span>
-          </a>
-          <a data-sveltekit-preload-data="viewport" href="/app/kontakt" class="row">
-            <i>phone</i>
-            <span>Kontakta</span>
-          </a>
-          <a data-sveltekit-preload-data="viewport" href="/app/installningar" class="row">
-            <i>settings</i>
-            <span>Inställningar</span>
-          </a>
-        </menu>
-      </button>
+      <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app/mer">
+        <i>more_vert</i>
+      </a>
       <div class="max" />
     </nav>
   </div>
@@ -77,7 +63,7 @@ import { browser } from '$app/environment';
       <div>
           3. Lägg till på Hem-Skärmen <iconify-icon icon="ic:baseline-add-to-home-screen"></iconify-icon>
       </div>
-      <iframe src="https://www.youtube.com/embed/eVkQOHFSTig?modestbranding=1&rel=0&cc_load_policy=1&iv_load_policy=3&color=white&disablekb=1" width="400" height="400" title="Hur man laddar ner" frameborder="0" allowfullscreen></iframe>  
+      <iframe src="https://www.youtube.com/embed/eVkQOHFSTig?modestbranding=1&rel=0&cc_load_policy=1&iv_load_policy=3&color=white&disablekb=1" width="400" height="400" title="Hur man laddar ner på Iphone" frameborder="0" allowfullscreen></iframe>  
   </div>
   </div>
 {/if}
