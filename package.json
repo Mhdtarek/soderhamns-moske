@@ -24,6 +24,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"canvas": "^2.11.2"
+		"canvas": "^2.11.2",
+		"hijri-converter": "^1.1.1",
+		"hijri-js": "^1.0.25",
+		"moment-hijri": "^2.1.2"
 	}
 }

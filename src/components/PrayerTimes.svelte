@@ -15,8 +15,8 @@ import { browser } from '$app/environment';
   isLarger.subscribe((value) => {
 		isLargerValue = value;
 	});
-  
   export let PrayerTimes = {}
+  console.log(PrayerTimes)
 </script>
 <article class="card green5" style="overflow: scroll; --text-size: {textSizeValue}%">
   Datum: {PrayerTimes.Dat}
@@ -51,6 +51,10 @@ import { browser } from '$app/environment';
       <tr>
         <th class:larger={isLargerValue}>Isha</th>
         <th class:larger={isLargerValue}>{PrayerTimes.Isha}</th>
+      </tr>
+      <tr>
+        <th class:larger={isLargerValue}>Hijri</th>
+        <th class:larger={isLargerValue}>{PrayerTimes.HiMo}/{PrayerTimes.hiDa}</th>
       </tr>
     </tbody>
   </table>

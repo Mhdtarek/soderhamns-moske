@@ -27,6 +27,7 @@
 */
   let monthlyPrayerTimes = []
   let monthsPrayerTimesImage = ""
+  
   onMount(async () => {
     fetch("/api/getTodayPrayerTimes")
       .then((response) => {
@@ -89,7 +90,19 @@
       .catch(function (error) { 
         console.log(error); 
       }); 
+      fetch("/api/getMonthsPrayerImage")
+      .then((response) => {
+        return response.text()
+      })
+      .then((data) => {
+        console.log(data)
+        monthsPrayerTimesImage = data
+      })  
+      .catch(function (error) { 
+        console.log(error); 
+      }); 
   }); 
+
   function downloadImage() {
     const link = document.createElement("a");
     link.href = monthsPrayerTimesImage;
@@ -131,6 +144,9 @@
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green5" style="overflow: scroll;">
+    <button class:larger={isLargerValue} on:click={downloadImage} class="green10">
+      Ladda ner som bild
+    </button>    
     <table class="border large-space" style="overflow-x: scroll; --text-size: {textSizeValue}%">
       <thead>
         <tr>
@@ -166,6 +182,9 @@
             </th>
             <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Isha}
+            </th>
+            <th class:larger={isLargerValue}>
+              {dailyPrayerTimes.HiMo}/{dailyPrayerTimes.hiDa}
             </th>
           </tr>
         {/each}
