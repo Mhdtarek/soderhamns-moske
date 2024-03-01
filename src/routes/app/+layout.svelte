@@ -6,7 +6,7 @@ import { browser } from '$app/environment';
 
   let textSizeValue = 100
   let isLargerValue = false
-  let isInStandalone = false
+  let isInStandalone = true
 
   textSize.subscribe((value) => {
 		textSizeValue = value;
