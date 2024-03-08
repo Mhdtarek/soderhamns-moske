@@ -79,6 +79,17 @@
       .catch(function (error) { 
         console.log(error); 
       }); 
+      fetch("/api/getMonthsPrayerImage")
+      .then((response) => {
+        return response.text()
+      })
+      .then((data) => {
+        console.log(data)
+        monthsPrayerTimesImage = data
+      })  
+      .catch(function (error) { 
+        console.log(error); 
+      }); 
   }); 
 
   function downloadImage() {
