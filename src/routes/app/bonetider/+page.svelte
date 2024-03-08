@@ -26,7 +26,7 @@
 * @type {any[]}
 */
   let monthlyPrayerTimes = []
-  let monthsPrayerTimesImage = ""
+  let monthsPrayerTimesImage = `https://soderhamns-moske.netlify.app/month-images/${new Date().getMonth()}.png`
   
   onMount(async () => {
     fetch("/api/getTodayPrayerTimes")
@@ -133,9 +133,9 @@
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green5" style="overflow: scroll;">
-    <button class:larger={isLargerValue} on:click={downloadImage} class="green10">
+    <a href={monthsPrayerTimesImage} download="Månad bönetider" class:larger={isLargerValue} class="green10 button">
       Ladda ner som bild
-    </button>    
+    </a>    
     <table class="border large-space" style="overflow-x: scroll; --text-size: {textSizeValue}%">
       <thead>
         <tr>
