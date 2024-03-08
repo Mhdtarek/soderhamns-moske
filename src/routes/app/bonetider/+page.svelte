@@ -133,7 +133,7 @@
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
   <article class="card green5" style="overflow: scroll;">
-    <a href={monthsPrayerTimesImage} download="Månad bönetider" class:larger={isLargerValue} class="green10 button">
+    <a href={monthsPrayerTimesImage} download="Månad bönetider" type="_blank" class:larger={isLargerValue} class="green10 button">
       Ladda ner som bild
     </a>    
     <table class="border large-space" style="overflow-x: scroll; --text-size: {textSizeValue}%">
