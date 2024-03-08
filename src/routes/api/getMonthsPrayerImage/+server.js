@@ -46,7 +46,7 @@ export function GET({ url, params }) {
       "December",
     ];
     const currentDate = new Date();
-    const currentMonth = months[currentDate.getMonth()];
+    const currentMonth = months[11];
 
     // Display additional information
 

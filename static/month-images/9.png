@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Reference the manifest.webmanifest file -->
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- Reference the manifest.json file -->
+    <link rel="manifest" href="manifest.json" />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <meta
+      name="viewport"
+      content="initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    
+	<style data-sveltekit>:root{--text-size:100%
+  }nav.s-dpsU4kCy6M1g.s-dpsU4kCy6M1g{position:fixed;bottom:0;width:100vw;height:8vh;left:0;right:0;padding:0 20px}.text-150.s-dpsU4kCy6M1g.s-dpsU4kCy6M1g{font-size:var(--text-size)
+}.noInstall.s-dpsU4kCy6M1g.s-dpsU4kCy6M1g{height:100vh;width:100vw;justify-content:center;text-align:center;display:block;font-size:large}.noInstall.s-dpsU4kCy6M1g h3.s-dpsU4kCy6M1g{text-align:center;display:block}.s-dpsU4kCy6M1g.s-dpsU4kCy6M1g{}
+.tabs.s-xnWrH8-8ZszV>a.active.s-xnWrH8-8ZszV{color:rgb(56, 142, 60);border-bottom:0.125rem solid rgb(56, 142, 60)
+  }.larger.s-xnWrH8-8ZszV.s-xnWrH8-8ZszV{font-size:var(--text-size)
+  }.s-xnWrH8-8ZszV.s-xnWrH8-8ZszV{}
+:root{--text-size:100%}article.s-T_yFG8NP2xlv{margin-top:10px}.larger.s-T_yFG8NP2xlv{font-size:var(--text-size)
+  }.s-T_yFG8NP2xlv{}</style><title>APP | BÖNETIDER</title><!-- HEAD_svelte-12csnbb_START --><!-- HEAD_svelte-12csnbb_END -->
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">  <div class="wrapper s-dpsU4kCy6M1g" style="--text-size: 150%"> <main class="responsive s-xnWrH8-8ZszV"><article class="no-padding border primary-container s-xnWrH8-8ZszV"><img class="responsive medium s-xnWrH8-8ZszV" src="/prayermosque.png"> <div class="absolute bottom left right padding bottom-shadow white-text s-xnWrH8-8ZszV"><nav class="s-xnWrH8-8ZszV"><h5 style="text-align: center; display: block;" class="s-xnWrH8-8ZszV" data-svelte-h="svelte-z9s8kq">Bönetider</h5> <div class="max s-xnWrH8-8ZszV"></div> <a href="/app/kontakt" class="circle transparent s-xnWrH8-8ZszV"><i class="s-xnWrH8-8ZszV" data-svelte-h="svelte-10goal6">phone</i></a></nav></div></article> <div class="tabs center-align min s-xnWrH8-8ZszV"><a data-ui="#page1" class="s-xnWrH8-8ZszV" data-svelte-h="svelte-5nvf3j">Bönetider igår</a> <a data-ui="#page2" class="active s-xnWrH8-8ZszV" data-svelte-h="svelte-1yspup3">Bönetider idag</a> <a data-ui="#page3" class="s-xnWrH8-8ZszV" data-svelte-h="svelte-wf9ldv">Bönetider imorgon</a></div> <div class="page s-xnWrH8-8ZszV" id="page1"><article class="card green5 s-T_yFG8NP2xlv" style="overflow: scroll; --text-size: 150%">Datum: undefined <table class="border large-space center-align s-T_yFG8NP2xlv" style="overflow-x: scroll;"><thead class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-101y9lm">Bön</th> <th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-11rg1q9">Tid</th></tr></thead> <tbody class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-udhyrf">Fajr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-12z6omo">Shuruk</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-1fhhw4n">Dhohr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-jqb5vq">Asr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-3i7x5m">Maghrib</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-u7gjax">Isha</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-17zl9g6">Hijri</th> <th class="s-T_yFG8NP2xlv">undefined/undefined</th></tr></tbody></table> </article></div> <div class="page active s-xnWrH8-8ZszV" id="page2"><article class="card green5 s-T_yFG8NP2xlv" style="overflow: scroll; --text-size: 150%">Datum: undefined <table class="border large-space center-align s-T_yFG8NP2xlv" style="overflow-x: scroll;"><thead class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-101y9lm">Bön</th> <th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-11rg1q9">Tid</th></tr></thead> <tbody class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-udhyrf">Fajr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-12z6omo">Shuruk</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-1fhhw4n">Dhohr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-jqb5vq">Asr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-3i7x5m">Maghrib</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-u7gjax">Isha</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-17zl9g6">Hijri</th> <th class="s-T_yFG8NP2xlv">undefined/undefined</th></tr></tbody></table> </article></div> <div class="page s-xnWrH8-8ZszV" id="page3"><article class="card green5 s-T_yFG8NP2xlv" style="overflow: scroll; --text-size: 150%">Datum: undefined <table class="border large-space center-align s-T_yFG8NP2xlv" style="overflow-x: scroll;"><thead class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-101y9lm">Bön</th> <th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-11rg1q9">Tid</th></tr></thead> <tbody class="s-T_yFG8NP2xlv"><tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-udhyrf">Fajr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-12z6omo">Shuruk</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-1fhhw4n">Dhohr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-jqb5vq">Asr</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-3i7x5m">Maghrib</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-u7gjax">Isha</th> <th class="s-T_yFG8NP2xlv">undefined</th></tr> <tr class="s-T_yFG8NP2xlv"><th class="s-T_yFG8NP2xlv" data-svelte-h="svelte-17zl9g6">Hijri</th> <th class="s-T_yFG8NP2xlv">undefined/undefined</th></tr></tbody></table> </article></div> <h4 style="text-align: center; display: block; margin-top: 20px; " class="s-xnWrH8-8ZszV" data-svelte-h="svelte-1hnbeh6">Månadens bönetider</h4> <article class="card green5 s-xnWrH8-8ZszV" style="overflow: scroll;"><button class="green10 s-xnWrH8-8ZszV" data-svelte-h="svelte-1g80ngp">Ladda ner som bild</button> <table class="border large-space s-xnWrH8-8ZszV" style="overflow-x: scroll; --text-size: 150%"><thead class="s-xnWrH8-8ZszV"><tr class="s-xnWrH8-8ZszV"><th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-o37107">Datum</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-17zl9g6">Hijri</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-udhyrf">Fajr</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-12z6omo">Shuruk</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-1fhhw4n">Dhohr</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-jqb5vq">Asr</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-3i7x5m">Maghrib</th> <th class="s-xnWrH8-8ZszV" data-svelte-h="svelte-u7gjax">Isha</th></tr></thead> <tbody class="s-xnWrH8-8ZszV"></tbody></table></article> </main> <br class="s-dpsU4kCy6M1g"> <br class="s-dpsU4kCy6M1g"> <br class="s-dpsU4kCy6M1g"> <br class="s-dpsU4kCy6M1g"> <nav class="tertiary-container green4 s-dpsU4kCy6M1g"><div class="max s-dpsU4kCy6M1g"></div> <a data-sveltekit-preload-data="viewport" class="button square round green8 s-dpsU4kCy6M1g" href="/app"><i class="s-dpsU4kCy6M1g" data-svelte-h="svelte-1bexogl">home</i></a> <a data-sveltekit-preload-data="viewport" class="button square round green8 s-dpsU4kCy6M1g" href="/app/bonetider"><i class="s-dpsU4kCy6M1g" data-svelte-h="svelte-1k5bbda">mosque</i></a> <a data-sveltekit-preload-data="viewport" class="button square round green8 s-dpsU4kCy6M1g" href="/app/nyheter"><i class="s-dpsU4kCy6M1g" data-svelte-h="svelte-14vr29h">newspaper</i></a> <a data-sveltekit-preload-data="viewport" class="button square round green8 s-dpsU4kCy6M1g" href="/app/mer"><i class="s-dpsU4kCy6M1g" data-svelte-h="svelte-dzollf">more_vert</i></a> <div class="max s-dpsU4kCy6M1g"></div></nav></div> 
+			
+			<script>
+				{
+					__sveltekit_dev = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("/@fs/C:/Users/karet/Desktop/kod/söderhamn-moske/node_modules/@sveltejs/kit/src/runtime/client/start.js"),
+						import("/@fs/C:/Users/karet/Desktop/kod/söderhamn-moske/.svelte-kit/generated/client/app.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 6],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+  <style>
+    html,
+    body {
+      overscroll-behavior-y: none;
+      overflow: scroll;
+      @media (max-width: 991px) {
+        webkit-touch-callout: none;
+      }
+    }
+  </style>
+  <link
+    href="https://cdn.jsdelivr.net/npm/beercss@3.2.10/dist/cdn/beer.min.css"
+    rel="stylesheet"
+  />
+  <script src="sw.js"></script>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/beercss@3.2.10/dist/cdn/beer.min.js"
+  ></script>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@0.1.7/dist/cdn/material-dynamic-colors.min.js"
+  ></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <!--Google Analytics-->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-PHS2WCLH21"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-PHS2WCLH21");
+  </script>
+</html>
