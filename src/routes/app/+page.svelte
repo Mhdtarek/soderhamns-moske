@@ -2,7 +2,7 @@
   import PrayerTimes from "../../components/PrayerTimes.svelte";
 
   export let data = {}
-  let prayerTimes = data.res
+  let prayerTimes = data.todayPrayerTimes
   let post = data.newsPost
 
 function formatDate(dateString) {

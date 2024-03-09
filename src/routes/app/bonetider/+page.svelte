@@ -79,25 +79,8 @@
       .catch(function (error) { 
         console.log(error); 
       }); 
-      fetch("/api/getMonthsPrayerImage")
-      .then((response) => {
-        return response.text()
-      })
-      .then((data) => {
-        console.log(data)
-        monthsPrayerTimesImage = data
-      })  
-      .catch(function (error) { 
-        console.log(error); 
-      }); 
   }); 
 
-  function downloadImage() {
-    const link = document.createElement("a");
-    link.href = monthsPrayerTimesImage;
-    link.download = "image.png";
-    link.click();
-  }
 </script>
 <svelte:head>
   <title>APP | BÖNETIDER</title>

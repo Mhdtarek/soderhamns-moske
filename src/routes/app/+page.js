@@ -2,10 +2,11 @@ import { error } from "@sveltejs/kit";
 
 // @ts-ignore
 export async function load({ fetch }) {
-  const res = await fetch(`/api/getTodayPrayerTimes`);
-  const data = await res.json();
-  const resNews = await fetch(`/api/getNewestNewsPost`);
-  const newsData = await resNews.json();
+  const todayPrayerTimes = await fetch(`/api/getTodayPrayerTimes`);
+  const newestNews = await fetch(`/api/getNewestNewsPost`);
 
-  return { res: data, newsPost: newsData };
+  return {
+    todayPrayerTimes: todayPrayerTimes.json(),
+    newsPost: newestNews.json(),
+  };
 }
