@@ -13,7 +13,7 @@ export function GET({ url, params }) {
 
   try {
     let dayPrayerTimes = getSpecificDayPrayerTimes(monthToJsonFile, month, day);
-    return json(dayPrayerTimes);
+    return json({ ...dayPrayerTimes, month: month });
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);

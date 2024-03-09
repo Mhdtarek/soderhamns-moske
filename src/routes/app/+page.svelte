@@ -35,7 +35,7 @@ function formatDate(dateString) {
     </div>
   </article>
     {#if prayerTimes != {}}
-      <PrayerTimes PrayerTimes={prayerTimes} ></PrayerTimes>
+      <PrayerTimes {prayerTimes} header="Dagens bönetider"></PrayerTimes>
     {/if}
     <article class="s6" style="margin-top: 0;">
       <h3 style="text-align: center; display: block">Nyaste nyhet</h3>

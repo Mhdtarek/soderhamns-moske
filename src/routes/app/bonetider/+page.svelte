@@ -22,6 +22,7 @@
   let yesterdayPrayerTimes = {}
   let todayPrayerTimes = {}
   let tommorowPrayerTimes = {}
+  
   /**
 * @type {any[]}
 */
@@ -105,13 +106,13 @@
   </div>
   
   <div class="page" id="page1">
-    <PrayerTimes PrayerTimes={yesterdayPrayerTimes} />
+    <PrayerTimes prayerTimes={yesterdayPrayerTimes} />
   </div>
   <div class="page active" id="page2">
-    <PrayerTimes PrayerTimes={todayPrayerTimes} />
+    <PrayerTimes prayerTimes={todayPrayerTimes} />
   </div>
   <div class="page" id="page3">
-    <PrayerTimes PrayerTimes={tommorowPrayerTimes} />
+    <PrayerTimes prayerTimes={tommorowPrayerTimes} />
   </div>
 
   <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
@@ -119,7 +120,6 @@
     <a href={monthsPrayerTimesImage} download="Månad bönetider" target="_blank" class:larger={isLargerValue} class="green10 button">
       Ladda ner som bild
     </a>    
-    <p>test {monthsPrayerTimesImage}</p>
     <table class="border large-space" style="overflow-x: scroll; --text-size: {textSizeValue}%">
       <thead>
         <tr>
@@ -167,6 +167,7 @@
   </article>
 </main>
 <style>
+  
   .tabs>a.active {
     color: rgb(56, 142, 60);
     border-bottom: 0.125rem solid rgb(56, 142, 60)
