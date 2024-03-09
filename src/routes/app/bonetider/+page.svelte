@@ -28,8 +28,8 @@
 */
   let monthlyPrayerTimes = []
   let monthsPrayerTimesImage = `https://soderhamns-moske.netlify.app/month-images/${new Date().getMonth()}.png`
-  
-  onMount(async () => {
+
+  onMount(async () => { 
     fetch("/api/getTodayPrayerTimes")
       .then((response) => {
         return response.json();
@@ -60,28 +60,19 @@
       .catch(function (error) { 
         console.log(error); 
       }); 
-    fetch("/api/getYesterdayPrayerTimes")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        yesterdayPrayerTimes = data;
-      })  
-      .catch(function (error) { 
-        console.log(error); 
-      }); 
     fetch("/api/getMonthsPrayerTime")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         monthlyPrayerTimes = data;
+        console.log(monthlyPrayerTimes)
+
       })  
       .catch(function (error) { 
         console.log(error); 
       }); 
   }); 
-
 </script>
 <svelte:head>
   <title>APP | BÖNETIDER</title>
