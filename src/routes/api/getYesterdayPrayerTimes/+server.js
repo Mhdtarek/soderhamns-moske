@@ -4,19 +4,38 @@ import {
   getSpecificDayPrayerTimes,
   dateToDayAndMonth,
 } from "$lib/prayerutils";
+
+// Function to get the last day of the previous month
+function getLastDayOfPreviousMonth(year, month) {
+  return new Date(year, month - 1, 0).getDate();
+}
+
 // @ts-ignore
 export function GET({ url, params }) {
   // @ts-ignore
   const today = dateToDayAndMonth(new Date());
-  const month = today.month.toString();
-  const day = today.day - 1;
+  let month = today.month.toString();
+  let day = today.day - 1;
   const dayString = day.toString();
+
+  // Check if today is the first day of the month
+  if (day === 0) {
+    // Get the last day of the previous month
+    const lastDayOfPrevMonth = getLastDayOfPreviousMonth(
+      today.year,
+      today.month
+    );
+    // Set month to the previous month
+    month = (today.month - 1).toString();
+    // Set day to the last day of the previous month
+    day = lastDayOfPrevMonth;
+  }
 
   try {
     let dayPrayerTimes = getSpecificDayPrayerTimes(
       monthToJsonFile,
       month,
-      dayString
+      day.toString()
     );
     return json({ ...dayPrayerTimes, month: month });
   } catch (err) {
