@@ -1,10 +1,26 @@
+//@ts-nocheck
 <script>
   import { onMount, onDestroy } from "svelte";
+  import { requestNotificationPermission, schedulePrayerNotifications } from "$lib/prayerutils/notifications";
   
   let nextTime = {};
   let countdownInterval;
+  let notificationsEnabled = false;
+  
+  async function initializeNotifications() {
+    notificationsEnabled = await requestNotificationPermission();
+    if (notificationsEnabled) {
+      // Fetch today's prayer times and schedule notifications
+      const response = await fetch("/api/getTodayPrayerTimes");
+      const prayerTimes = await response.json();
+      schedulePrayerNotifications(prayerTimes);
+    }
+  }
   
   onMount(async () => {
+    // Initialize notifications
+    await initializeNotifications();
+
     fetch("/api/getNextPrayerTime")
       .then((response) => {
         return response.json();
@@ -69,6 +85,9 @@
   </h6>
   <h5>{nextTime.key} | {nextTime.countdown}</h5>
   <h7></h7>
+  {#if !notificationsEnabled}
+    <button on:click={initializeNotifications}>Aktivera aviseringar</button>
+  {/if}
 </article>
 
 <style>
