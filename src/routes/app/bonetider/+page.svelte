@@ -1,3 +1,4 @@
+//@ts-nocheck
 <script>
   import { onMount } from "svelte";
   import PrayerTimes from "../../../components/PrayerTimes.svelte";
@@ -9,6 +10,7 @@
   let sizeValue = ""
   let textSizeValue = 100
   let isLargerValue = false
+  let notificationsEnabled = false;
 
   size.subscribe((value) => {
 		sizeValue = value;
@@ -30,7 +32,40 @@
   let monthlyPrayerTimes = []
   let monthsPrayerTimesImage = `https://soderhamns-moske.netlify.app/month-images/${new Date().getMonth()}.png`
 
+  async function toggleNotifications() {
+    console.log('Toggle notifications clicked');
+    if (!notificationsEnabled) {
+      console.log('Requesting notification permission...');
+      notificationsEnabled = await requestNotificationPermission();
+      console.log('Notification permission result:', notificationsEnabled);
+      if (notificationsEnabled && todayPrayerTimes) {
+        console.log('Scheduling notifications for today:', todayPrayerTimes);
+        schedulePrayerNotifications(todayPrayerTimes);
+      }
+    }
+  }
+
+  async function testNotification() {
+    console.log('Test notification clicked');
+    if (!notificationsEnabled) {
+      console.log('Requesting permission first...');
+      notificationsEnabled = await requestNotificationPermission();
+    }
+    if (notificationsEnabled) {
+      console.log('Sending test notification...');
+      sendTestNotification();
+    }
+  }
+
   onMount(async () => { 
+    // Check if notifications are already enabled
+    if (browser && "Notification" in window) {
+      notificationsEnabled = Notification.permission === "granted";
+      if (notificationsEnabled) {
+        await requestNotificationPermission();
+      }
+    }
+
     fetch("/api/getTodayPrayerTimes")
       .then((response) => {
         return response.json();
@@ -72,7 +107,6 @@
       .then((data) => {
         monthlyPrayerTimes = data;
         console.log(monthlyPrayerTimes)
-
       })  
       .catch(function (error) { 
         console.log(error); 
