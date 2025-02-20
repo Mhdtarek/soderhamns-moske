@@ -55,10 +55,6 @@ import { browser } from '$app/environment';
         <th class:larger={isLargerValue}>Isha</th>
         <th class:larger={isLargerValue}>{prayerTimes.Isha}</th>
       </tr>
-      <tr>
-        <th class:larger={isLargerValue}>Hijri</th>
-        <th class:larger={isLargerValue}>{prayerTimes.HiMo}/{prayerTimes.hiDa}</th>
-      </tr>
     </tbody>
   </table>
   <a href="/app/bonetider">Se mer bönetider</a>

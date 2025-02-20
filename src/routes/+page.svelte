@@ -2,6 +2,8 @@
 import PrayerTimes from "../components/PrayerTimes.svelte";
 
 export let data = {}
+console.log(data)
+let prayerTimes = data.prayerTimes
 </script>
 
 <svelte:head>
@@ -13,7 +15,7 @@ export let data = {}
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Ladda ned Söderhamns Moske App">
   <meta property="og:description" content="Ladda ned Söderhamns Moske app">
-  <meta property="og:image" content="/mosque.png"> <!-- Ersätt med den faktiska bildens URL -->
+  <meta property="og:image" content="/mosque.png">
   <meta property="og:url" content="https://soderhamns-moske.netlify.app">
   <meta property="og:type" content="website">
   <title>Ladda ned Söderhamns Moske Appen</title>
@@ -35,7 +37,7 @@ export let data = {}
         <a href="https://play.google.com/store/apps/details?id=mhdtarek.soderhamnmoske" class="button green10 button large">Ladda ned</a>
         <a href="https://soderhamns-moske.netlify.app/privacy-policy" class="underline">integritetspolicy</a>
       </section>
-      <PrayerTimes PrayerTimes={data.prayerTimes}/>
+      <PrayerTimes prayerTimes={data.prayerTimes}/>
     </main>
   </div>
 </main>

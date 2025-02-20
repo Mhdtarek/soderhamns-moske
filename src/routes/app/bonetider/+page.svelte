@@ -115,7 +115,6 @@
       <thead>
         <tr>
           <th class:larger={isLargerValue}>Datum</th>
-          <th class:larger={isLargerValue}>Hijri</th>
           <th class:larger={isLargerValue}>Fajr</th>
           <th class:larger={isLargerValue}>Shuruk</th>
           <th class:larger={isLargerValue}>Dhohr</th>
@@ -129,9 +128,6 @@
           <tr>
             <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Dat}
-            </th>
-            <th class:larger={isLargerValue}>
-              {dailyPrayerTimes.HiMo}/{dailyPrayerTimes.hiDa}
             </th>
             <th class:larger={isLargerValue}>
               {dailyPrayerTimes.Fajr}
