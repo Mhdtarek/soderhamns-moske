@@ -2,178 +2,178 @@
 let notificationPermission = false;
 let serviceWorkerRegistration = null;
 
-export async function initializeServiceWorker() {
-  console.log("Initializing service worker...");
-  if ("serviceWorker" in navigator) {
-    try {
-      console.log(
-        "Browser supports service workers, attempting to register..."
-      );
-
-      // First check if we already have a controller
-      if (navigator.serviceWorker.controller) {
-        console.log("Service worker already controlling the page");
-        serviceWorkerRegistration = await navigator.serviceWorker.ready;
-        return true;
-      }
-
-      // Register service worker from the static directory
-      serviceWorkerRegistration = await navigator.serviceWorker.register(
-        "/service-worker.js",
-        {
-          scope: "/",
-          updateViaCache: "none",
-        }
-      );
-      console.log(
-        "Service worker registration successful:",
-        serviceWorkerRegistration
-      );
-
-      // Wait for the service worker to be ready
-      const registration = await navigator.serviceWorker.ready;
-      serviceWorkerRegistration = registration;
-      console.log("Service worker is ready");
-
-      // Wait for the service worker to take control
-      if (!navigator.serviceWorker.controller) {
-        await new Promise((resolve) => {
-          navigator.serviceWorker.addEventListener("controllerchange", () => {
-            console.log("Service worker now controlling the page");
-            resolve();
-          });
-        });
-      }
-
-      return true;
-    } catch (error) {
-      console.error("Service Worker registration failed:", error);
-      return false;
-    }
-  }
-  console.log("Browser does not support service workers");
-  return false;
-}
-
-export async function requestNotificationPermission() {
-  console.log("Requesting notification permission...");
-  if (!("Notification" in window)) {
-    console.log("This browser does not support notifications");
+async function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) {
+    console.log("[Notifications] Browser does not support service workers");
     return false;
   }
 
   try {
-    // Check if we already have permission
+    // Check if service worker is already registered
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    console.log("[Notifications] Existing registrations:", registrations);
+
+    if (registrations.length > 0) {
+      // Unregister any existing service workers
+      await Promise.all(registrations.map((reg) => reg.unregister()));
+      console.log("[Notifications] Unregistered existing service workers");
+    }
+
+    // Register new service worker with absolute path
+    const swPath = `${window.location.origin}/service-worker.js`;
+    console.log("[Notifications] Registering service worker at:", swPath);
+
+    serviceWorkerRegistration = await navigator.serviceWorker.register(swPath, {
+      scope: "/",
+    });
+
+    console.log(
+      "[Notifications] Service worker registered:",
+      serviceWorkerRegistration
+    );
+
+    // Wait for the service worker to be ready
+    const readyRegistration = await navigator.serviceWorker.ready;
+    console.log("[Notifications] Service worker is ready:", readyRegistration);
+
+    // Request background sync permission
+    try {
+      await navigator.permissions.query({ name: "periodic-background-sync" });
+      console.log("[Notifications] Background sync is supported");
+    } catch (err) {
+      console.log("[Notifications] Background sync is not supported:", err);
+    }
+
+    // Wait for the service worker to take control
+    if (!navigator.serviceWorker.controller) {
+      console.log(
+        "[Notifications] Waiting for service worker to take control..."
+      );
+      await new Promise((resolve) => {
+        const timeout = setTimeout(() => {
+          console.log("[Notifications] Service worker control timeout");
+          resolve();
+        }, 5000);
+
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          console.log(
+            "[Notifications] Service worker now controlling the page"
+          );
+          clearTimeout(timeout);
+          resolve();
+        });
+      });
+    }
+
+    // Test if we can communicate with the service worker
+    if (navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage({ type: "PING" });
+      console.log("[Notifications] Sent PING to service worker");
+    }
+
+    return true;
+  } catch (error) {
+    console.error("[Notifications] Service worker registration failed:", error);
+    return false;
+  }
+}
+
+export async function requestNotificationPermission() {
+  console.log("[Notifications] Requesting permission...");
+
+  if (!("Notification" in window)) {
+    console.log("[Notifications] Browser does not support notifications");
+    return false;
+  }
+
+  try {
+    // Check if already granted
     if (Notification.permission === "granted") {
-      console.log("Notification permission already granted");
+      console.log("[Notifications] Permission already granted");
       notificationPermission = true;
-      await initializeServiceWorker();
+      await registerServiceWorker();
       return true;
     }
 
-    if (Notification.permission === "denied") {
-      console.log("Notifications are blocked by the browser");
-      return false;
-    }
-
-    console.log("Asking user for permission...");
+    // Request permission
     const permission = await Notification.requestPermission();
-    console.log("Permission response:", permission);
+    console.log("[Notifications] Permission response:", permission);
     notificationPermission = permission === "granted";
 
     if (notificationPermission) {
-      console.log("Permission granted, initializing service worker...");
-      await initializeServiceWorker();
-      // Send an immediate test notification
-      sendTestNotification();
+      await registerServiceWorker();
     }
 
     return notificationPermission;
   } catch (error) {
-    console.error("Error requesting notification permission:", error);
+    console.error("[Notifications] Error requesting permission:", error);
     return false;
   }
 }
 
 export function sendTestNotification() {
-  console.log("Sending test notification...");
+  console.log("[Notifications] Sending test notification...");
   if (!notificationPermission) {
-    console.log("Cannot send test notification - permission not granted");
+    console.log("[Notifications] Cannot send test - permission not granted");
     return;
   }
 
-  if (navigator.serviceWorker.controller) {
-    console.log("Sending test message to service worker");
-    navigator.serviceWorker.controller.postMessage({
-      type: "SEND_TEST_NOTIFICATION",
-    });
-  } else {
-    console.log("Service worker not ready, using regular notification");
-    try {
+  try {
+    if (navigator.serviceWorker.controller) {
+      console.log("[Notifications] Sending test via service worker");
+      // Send immediate test notification
+      navigator.serviceWorker.controller.postMessage({
+        type: "SEND_TEST_NOTIFICATION",
+      });
+
+      // Send delayed test notification
+      navigator.serviceWorker.controller.postMessage({
+        type: "SEND_DELAYED_TEST_NOTIFICATION",
+        delay: 15000, // 15 seconds
+      });
+    } else {
+      console.log("[Notifications] Falling back to regular notification");
       new Notification("Test Notification", {
         body: "Detta är ett test av aviseringar",
         icon: "/favicon.png",
         requireInteraction: true,
-        silent: false,
       });
-    } catch (error) {
-      console.error("Error sending test notification:", error);
     }
+  } catch (error) {
+    console.error("[Notifications] Error sending test notification:", error);
   }
-}
-
-export function scheduleNotification(prayerName, prayerTime) {
-  if (!notificationPermission) return;
-
-  const [hours, minutes] = prayerTime.split(":");
-  const now = new Date();
-  const scheduledTime = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    parseInt(hours),
-    parseInt(minutes)
-  );
-
-  // If the prayer time has already passed today, schedule for tomorrow
-  if (scheduledTime < now) {
-    scheduledTime.setDate(scheduledTime.getDate() + 1);
-  }
-
-  const timeUntilNotification = scheduledTime.getTime() - now.getTime();
-
-  setTimeout(() => {
-    new Notification("Prayer Time", {
-      body: `It's time for ${prayerName} prayer (${prayerTime})`,
-      icon: "/favicon.png", // Make sure you have a favicon
-      silent: false,
-    });
-  }, timeUntilNotification);
 }
 
 export function schedulePrayerNotifications(prayerTimes) {
-  console.log("Attempting to schedule prayer notifications...", prayerTimes);
-  if (!notificationPermission || !navigator.serviceWorker.controller) {
-    console.log("Notifications not enabled or service worker not ready");
-    console.log("Permission:", notificationPermission);
-    console.log(
-      "Service Worker Controller:",
-      !!navigator.serviceWorker.controller
-    );
+  console.log("[Notifications] Scheduling prayer times:", prayerTimes);
+  if (!notificationPermission) {
+    console.log("[Notifications] Cannot schedule - permission not granted");
     return;
   }
 
-  // Filter out non-prayer time fields
-  const validPrayerTimes = {};
-  ["Fajr", "Shuruk", "Dhohr", "Asr", "Maghrib", "Isha"].forEach((prayer) => {
-    if (prayerTimes[prayer]) {
-      validPrayerTimes[prayer] = prayerTimes[prayer];
-    }
-  });
+  if (!navigator.serviceWorker.controller) {
+    console.log("[Notifications] Cannot schedule - service worker not ready");
+    return;
+  }
 
-  console.log("Sending prayer times to service worker:", validPrayerTimes);
-  navigator.serviceWorker.controller.postMessage({
-    type: "SCHEDULE_PRAYER_TIMES",
-    prayerTimes: validPrayerTimes,
-  });
+  try {
+    // Filter out non-prayer time fields
+    const validPrayerTimes = {};
+    ["Fajr", "Shuruk", "Dhohr", "Asr", "Maghrib", "Isha"].forEach((prayer) => {
+      if (prayerTimes[prayer] && typeof prayerTimes[prayer] === "string") {
+        validPrayerTimes[prayer] = prayerTimes[prayer];
+      }
+    });
+
+    console.log(
+      "[Notifications] Sending valid prayer times to service worker:",
+      validPrayerTimes
+    );
+    navigator.serviceWorker.controller.postMessage({
+      type: "SCHEDULE_PRAYER_TIMES",
+      prayerTimes: validPrayerTimes,
+    });
+  } catch (error) {
+    console.error("[Notifications] Error scheduling notifications:", error);
+  }
 }
