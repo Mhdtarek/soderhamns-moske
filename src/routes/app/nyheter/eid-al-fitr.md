@@ -5,7 +5,11 @@ created: Admin
 date: 2025-03-29T23:29:00
 ---
 **Eid Mubarak!**
+
+
 Imorgon blir det Eid al-Fitr i A-hallen i Söderhamn kl. 08:00. Glöm inte att ta med era bönemattor.
 
 **عِيد مُبَارَك**
+
+
 غدًا سيكون عيد الفطر في  A Hallen في سودرهامن الساعة 08:00. تعالوا واحتفلوا معنا! لا تنسوا إحضار سجاجيد الصلاة.
