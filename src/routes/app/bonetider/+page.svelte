@@ -1,6 +1,8 @@
+//@ts-nocheck
 <script>
   import { onMount } from "svelte";
   import PrayerTimes from "../../../components/PrayerTimes.svelte";
+  import { requestNotificationPermission, schedulePrayerNotifications, sendTestNotification } from "$lib/prayerutils/notifications";
 
   import { size, textSize, isLarger } from "$lib/stores";
   import { browser } from '$app/environment'; 
@@ -8,6 +10,7 @@
   let sizeValue = ""
   let textSizeValue = 100
   let isLargerValue = false
+  let notificationsEnabled = false;
 
   size.subscribe((value) => {
 		sizeValue = value;
@@ -29,13 +32,50 @@
   let monthlyPrayerTimes = []
   let monthsPrayerTimesImage = `https://soderhamns-moske.netlify.app/month-images/${new Date().getMonth()}.png`
 
+  async function toggleNotifications() {
+    console.log('Toggle notifications clicked');
+    if (!notificationsEnabled) {
+      console.log('Requesting notification permission...');
+      notificationsEnabled = await requestNotificationPermission();
+      console.log('Notification permission result:', notificationsEnabled);
+      if (notificationsEnabled && todayPrayerTimes) {
+        console.log('Scheduling notifications for today:', todayPrayerTimes);
+        schedulePrayerNotifications(todayPrayerTimes);
+      }
+    }
+  }
+
+  async function testNotification() {
+    console.log('Test notification clicked');
+    if (!notificationsEnabled) {
+      console.log('Requesting permission first...');
+      notificationsEnabled = await requestNotificationPermission();
+    }
+    if (notificationsEnabled) {
+      console.log('Sending test notification...');
+      sendTestNotification();
+    }
+  }
+
   onMount(async () => { 
+    // Check if notifications are already enabled
+    if (browser && "Notification" in window) {
+      notificationsEnabled = Notification.permission === "granted";
+      if (notificationsEnabled) {
+        await requestNotificationPermission();
+      }
+    }
+
     fetch("/api/getTodayPrayerTimes")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         todayPrayerTimes = data;
+        // Schedule notifications if already enabled
+        if (notificationsEnabled) {
+          schedulePrayerNotifications(data);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -67,7 +107,6 @@
       .then((data) => {
         monthlyPrayerTimes = data;
         console.log(monthlyPrayerTimes)
-
       })  
       .catch(function (error) { 
         console.log(error); 
@@ -90,6 +129,32 @@
       </nav>
     </div>
   </article>
+
+  <!-- Add notification control -->
+  <article class="card green5" style="margin: 1rem 0;">
+    <h6 style="text-align: center; margin-bottom: 1rem;">Bönetidsaviseringar</h6>
+    <div style="display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 1rem;">
+      <button 
+        class="green10 button" 
+        on:click={toggleNotifications}
+      >
+        {notificationsEnabled ? 'Aviseringar aktiverade' : 'Aktivera aviseringar'}
+      </button>
+      
+      {#if notificationsEnabled}
+        <button 
+          class="green10 button" 
+          on:click={testNotification}
+        >
+          Testa avisering
+        </button>
+        <p style="text-align: center; font-size: 0.9em; color: #666;">
+          Du kommer att få aviseringar vid varje bönetid, även när webbläsaren är stängd.
+        </p>
+      {/if}
+    </div>
+  </article>
+
   <div class="tabs center-align min">
     <a data-ui="#page1">Bönetider igår</a>
     <a data-ui="#page2" class="active">Bönetider idag</a>
