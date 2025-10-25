@@ -1,9 +1,10 @@
 ---
 layout: nyheter
-title: 'Nytt: Inställningar'
+title: "Nytt: Inställningar"
 created: Admin
-date: 2023-09-30T18:01
+date: 2025-09-30T18:01
 ---
+
 ### Gör allting större inställning
 
 Från och med idag går det nu att gå in i inställningar och att göra så att allting i appen är större.
