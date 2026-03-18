@@ -27,6 +27,27 @@ export const monthToJsonFile = [
 ];
 
 /**
+ * Thank you chatGPT! I dont have time for ts anymore!! Normalize a prayer-time row for stricter clients (New APP).
+ * - Ensures `Dat` is a number (1-31) when possible.
+ * - Keeps time fields as strings ("HH:mm").
+ * @param {{ [x: string]: any }} row
+ */
+export function normalizePrayerTimesRow(row) {
+  const datNum = Number(row.Dat);
+  return {
+    ...row,
+    Dat: Number.isFinite(datNum) ? datNum : row.Dat,
+  };
+}
+
+/**
+ * @param {any[]} rows
+ */
+export function normalizePrayerTimesMonth(rows) {
+  return rows.map(normalizePrayerTimesRow);
+}
+
+/**
  * @param {{ [x: string]: any; }} prayerTimes
  */
 export function getNextPrayerTime(timeObject) {
@@ -72,7 +93,7 @@ export function getSpecificDayPrayerTimes(monthToJson, month, day) {
   }
 
   const dayPrayerTimes = monthPrayerTimes.file.find(
-    (element) => element.Dat === day
+    (element) => String(element.Dat) === String(day)
   );
 
   if (!dayPrayerTimes) {

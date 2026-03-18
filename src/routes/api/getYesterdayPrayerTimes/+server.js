@@ -3,6 +3,7 @@ import {
   monthToJsonFile,
   getSpecificDayPrayerTimes,
   dateToDayAndMonth,
+  normalizePrayerTimesRow,
 } from "$lib/prayerutils";
 
 // Function to get the last day of the previous month
@@ -37,7 +38,7 @@ export function GET({ url, params }) {
       month,
       day.toString()
     );
-    return json({ ...dayPrayerTimes, month: month });
+    return json({ ...normalizePrayerTimesRow(dayPrayerTimes), month: Number(month) });
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);

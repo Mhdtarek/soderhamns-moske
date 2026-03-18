@@ -1,5 +1,9 @@
 import { json, error } from "@sveltejs/kit";
-import { monthToJsonFile, getMonthPrayerTime } from "$lib/prayerutils";
+import {
+  monthToJsonFile,
+  getMonthPrayerTime,
+  normalizePrayerTimesMonth,
+} from "$lib/prayerutils";
 // @ts-ignore
 export function GET({ url, params }) {
   const month = url.searchParams.get("month");
@@ -8,7 +12,7 @@ export function GET({ url, params }) {
 
   try {
     let dayPrayerTimes = getMonthPrayerTime(monthToJsonFile, month);
-    return json(dayPrayerTimes);
+    return json(normalizePrayerTimesMonth(dayPrayerTimes));
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);

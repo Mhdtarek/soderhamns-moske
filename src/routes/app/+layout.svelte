@@ -29,10 +29,6 @@ import { browser } from '$app/environment';
 {#if isInStandalone}
   <div class="wrapper" class:text-150={isLargerValue} style="--text-size: {textSizeValue}%">
     <slot />
-    <br>
-    <br>
-    <br>
-    <br>
     <nav class="tertiary-container green4">
       <div class="max" />
       <a data-sveltekit-preload-data="viewport" class="button square round green8" class:large={isLargerValue} href="/app">
@@ -73,6 +69,23 @@ import { browser } from '$app/environment';
     --text-size: 100%
   }
 
+  :root {
+    --bottom-nav-height: 8vh;
+  }
+
+  /* BeerCSS defines `.wrapper` as a full-viewport app shell; in our case that can
+     inadvertently lock scrolling. Make the wrapper the vertical scroll container
+     so pages like `/app/bonetider` can scroll normally while the bottom nav stays fixed. */
+  .wrapper {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Keep content clear of the fixed bottom nav without adding excessive blank space */
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
+  }
+
   .respon {
     width:-webkit-fill-available;
     width:-moz-available;
@@ -82,7 +95,7 @@ import { browser } from '$app/environment';
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 8vh;
+    height: var(--bottom-nav-height);
     left: 0;
     right: 0;
     padding: 0 20px;

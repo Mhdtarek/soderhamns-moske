@@ -3,6 +3,7 @@ import {
   monthToJsonFile,
   getSpecificDayPrayerTimes,
   dateToDayAndMonth,
+  normalizePrayerTimesRow,
 } from "$lib/prayerutils";
 // @ts-ignore
 export function GET({ url, params }) {
@@ -18,7 +19,7 @@ export function GET({ url, params }) {
       month,
       dayString
     );
-    return json({ ...dayPrayerTimes, month: month });
+    return json({ ...normalizePrayerTimesRow(dayPrayerTimes), month: Number(month) });
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);

@@ -3,6 +3,7 @@ import {
   monthToJsonFile,
   getMonthPrayerTime,
   dateToDayAndMonth,
+  normalizePrayerTimesMonth,
 } from "$lib/prayerutils";
 // @ts-ignore
 var getMonth = function (idx) {
@@ -21,7 +22,7 @@ export function GET({ url, params }) {
   const Mo = getMonth(month);
   try {
     let monthPrayerTimes = getMonthPrayerTime(monthToJsonFile, month);
-    return json(monthPrayerTimes);
+    return json(normalizePrayerTimesMonth(monthPrayerTimes));
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);
