@@ -34,9 +34,8 @@ function formatDate(dateString) {
       </nav>
     </div>
   </article>
-    {#if prayerTimes != {}}
-      <PrayerTimes {prayerTimes} header="Dagens bönetider"></PrayerTimes>
-    {/if}
+    <!-- `prayerTimes != {}` is always true in JS; PrayerTimes handles its own skeleton state -->
+    <PrayerTimes {prayerTimes} header="Dagens bönetider"></PrayerTimes>
     <article class="s6" style="margin-top: 0;">
       <h3 style="text-align: center; display: block">Nyaste nyhet</h3>
       <article class="green5" style="text-align: center; ">
