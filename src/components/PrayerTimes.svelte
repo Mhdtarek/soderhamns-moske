@@ -3,6 +3,7 @@ import { size, textSize, isLarger } from "$lib/stores";
 import { browser } from '$app/environment'; 
 import { page } from "$app/stores";
 
+  /** @type {any} */
   export let prayerTimes = {}
   export let header = ""
 
@@ -29,14 +30,19 @@ import { page } from "$app/stores";
 
   $: isOnBonetiderPage = $page.url.pathname === "/app/bonetider";
 </script>
-<article class="card green5" style="overflow: hidden; --text-size: {textSizeValue}%">
-  <p style="text-align: center; font-size: 4vh">{header}</p>
+<article class="card green5 prayer-times-card" style="overflow: hidden; --text-size: {textSizeValue}%">
+  <div class="card-header">
+    <p class="header-label">{header || "Bönetider"}</p>
+    {#if !isLoading}
+      <p class="header-date">{prayerTimes.month}/{prayerTimes.Dat}</p>
+    {/if}
+  </div>
 
   {#if isLoading}
     <div class="meta-row">
-      <span class="skeleton skeleton-text" style="width: 50%"></span>
+      <span class="skeleton skeleton-text" style="width: 40%"></span>
     </div>
-    <table class="border large-space center-align">
+    <table class="border large-space center-align prayer-table">
       <thead>
         <tr>
           <th class:larger={isLargerValue}>Bön</th>
@@ -71,10 +77,7 @@ import { page } from "$app/stores";
       </tbody>
     </table>
   {:else}
-    <div class="meta-row">
-      Datum: {prayerTimes.month}/{prayerTimes.Dat}
-    </div>
-    <table class="border large-space center-align" style="overflow-x: auto;">
+    <table class="border large-space center-align prayer-table" style="overflow-x: auto;">
       <thead>
         <tr>
           <th class:larger={isLargerValue}>Bön</th>
@@ -109,7 +112,7 @@ import { page } from "$app/stores";
       </tbody>
     </table>
     {#if !isOnBonetiderPage}
-      <a href="/app/bonetider#top">Se mer bönetider</a>
+      <a class="more-link" href="/app/bonetider#top">Se mer bönetider</a>
     {/if}
   {/if}
 </article>
@@ -117,16 +120,47 @@ import { page } from "$app/stores";
   :root {
     --text-size: 100%;
   }
-  article {
+  .prayer-times-card {
     margin-top: 10px;
+    padding: 10px 10px 12px 10px;
   }
 
   .larger {
     font-size: var(--text-size)
   }
 
+  .card-header {
+    position: relative;
+    min-height: 16px;
+    padding: 0 6px 2px 6px;
+  }
+
+  .header-label {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0.74rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .header-date {
+    margin: 0;
+    font-size: 0.82rem;
+    text-align: right;
+    opacity: 0.9;
+  }
+
   .meta-row {
     padding: 0 16px 8px 16px;
+  }
+
+  .more-link {
+    display: inline-block;
+    margin: 8px 6px 0 6px;
+    font-size: 0.9rem;
   }
 
   /* Lightweight shimmer skeleton (no dependencies) */

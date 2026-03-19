@@ -58,23 +58,19 @@ export function getNextPrayerTime(timeObject) {
     .toString()
     .padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
 
-  const timesArray = Object.values(timeObject).sort();
+  const prayerKeys = ["Fajr", "Shuruk", "Dhohr", "Asr", "Maghrib", "Isha"];
+  const todaysPrayers = prayerKeys
+    .map((key) => ({ key, time: timeObject[key] }))
+    .filter((entry) => typeof entry.time === "string");
 
-  for (let i = 0; i < timesArray.length; i++) {
-    if (timesArray[i] >= currentFormattedTime) {
-      // Find the corresponding key for the next time
-      const nextTime = timesArray[i];
-      const nextTimeKey = Object.keys(timeObject).find(
-        (key) => timeObject[key] === nextTime
-      );
-      return { key: nextTimeKey, time: nextTime };
+  for (let i = 0; i < todaysPrayers.length; i++) {
+    if (todaysPrayers[i].time >= currentFormattedTime) {
+      return todaysPrayers[i];
     }
   }
 
-  // If there is no next time, return the first time in the object
-  const firstTimeKey = Object.keys(timeObject)[0];
-  const firstTime = timesArray[0];
-  return { key: firstTimeKey, time: firstTime };
+  // If there is no prayer time left today, return tomorrow's first prayer slot.
+  return { key: "Fajr", time: todaysPrayers[0]?.time || "00:00" };
 }
 
 /**

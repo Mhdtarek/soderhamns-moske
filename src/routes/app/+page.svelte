@@ -1,5 +1,6 @@
 <script>
   import PrayerTimes from "../../components/PrayerTimes.svelte";
+  import CurrentPrayerTime from "../../components/currentPrayerTime.svelte";
 
   export let data = {}
   let prayerTimes = data.todayPrayerTimes
@@ -34,9 +35,10 @@ function formatDate(dateString) {
       </nav>
     </div>
   </article>
+    <CurrentPrayerTime />
     <!-- `prayerTimes != {}` is always true in JS; PrayerTimes handles its own skeleton state -->
     <PrayerTimes {prayerTimes} header="Dagens bönetider"></PrayerTimes>
-    <article class="s6" style="margin-top: 0;">
+    <article class="s6" style="margin-top: 18px;">
       <h3 style="text-align: center; display: block">Nyaste nyhet</h3>
       <article class="green5" style="text-align: center; ">
         <a href={post.path} style="display: block;">

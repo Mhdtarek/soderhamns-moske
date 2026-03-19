@@ -82,7 +82,7 @@ import { browser } from '$app/environment';
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    /* Keep content clear of the fixed bottom nav without adding excessive blank space */
+    /* Keep content clear of the fixed bottom nav */
     padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
   }
 

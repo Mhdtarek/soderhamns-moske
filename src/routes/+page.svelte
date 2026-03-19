@@ -2,7 +2,6 @@
 import PrayerTimes from "../components/PrayerTimes.svelte";
 
 export let data = {}
-console.log(data)
 let prayerTimes = data.prayerTimes
 </script>
 
