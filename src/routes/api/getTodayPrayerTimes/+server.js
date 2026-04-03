@@ -1,4 +1,5 @@
 import { json, error } from "@sveltejs/kit";
+import { enrichPrayerTimesCalendar } from "$lib/hijriDate";
 import {
   monthToJsonFile,
   getSpecificDayPrayerTimes,
@@ -14,7 +15,14 @@ export function GET({ url, params }) {
 
   try {
     let dayPrayerTimes = getSpecificDayPrayerTimes(monthToJsonFile, month, day);
-    return json({ ...normalizePrayerTimesRow(dayPrayerTimes), month: Number(month) });
+    return json(
+      enrichPrayerTimesCalendar(
+        normalizePrayerTimesRow(dayPrayerTimes),
+        today.year,
+        today.month,
+        today.day
+      )
+    );
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);

@@ -1,3 +1,24 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+# Large static hero/donera PNGs: allow browser HTTP cache between visits (SW also precaches these).
+[[headers]]
+  for = "/mosque.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/prayermosque.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/mosquenews.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/swish-QR-large.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

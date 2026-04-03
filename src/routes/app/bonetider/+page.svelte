@@ -2,16 +2,12 @@
   import { onMount } from "svelte";
   import PrayerTimes from "../../../components/PrayerTimes.svelte";
 
-  import { size, textSize, isLarger } from "$lib/stores";
+  import { textSize, isLarger } from "$lib/stores";
   import { browser } from '$app/environment'; 
 
-  let sizeValue = ""
   let textSizeValue = 100
   let isLargerValue = false
 
-  size.subscribe((value) => {
-		sizeValue = value;
-	});
   textSize.subscribe((value) => {
 		textSizeValue = value;
 	});
@@ -89,14 +85,16 @@
 <svelte:head>
   <title>APP | BÖNETIDER</title>
 </svelte:head>
-<main class="responsive" id="top">
-  <article class="no-padding border primary-container">
-    <img class="responsive medium" src="/prayermosque.png" alt="Moské"><!----><!---->
-    <div class="absolute bottom left right padding bottom-shadow white-text">
+<main class="responsive app-page app-page-wide" id="top">
+  <article class="no-padding border primary-container app-hero">
+    <img class="responsive medium" src="/prayermosque.png" alt="Moské" />
+    <div
+      class="absolute bottom left right padding bottom-shadow white-text app-hero-bar"
+    >
       <nav>
-        <h5 style="text-align: center; display: block;">Bönetider</h5>
+        <h5 class="app-hero-title">Bönetider</h5>
         <div class="max"></div>
-        <a href="/app/kontakt" class="circle transparent">
+        <a href="/app/kontakt" class="circle transparent app-hero-icon" aria-label="Kontakt">
           <i>phone</i>
         </a>
       </nav>
@@ -119,8 +117,8 @@
   </div>
 
   <div bind:this={monthSentinel} style="height: 1px;"></div>
-  <h4 style="text-align: center; display: block; margin-top: 20px; ">Månadens bönetider</h4>
-  <article class="card green5" style="overflow: hidden;">
+  <h4 class="month-heading">Månadens bönetider</h4>
+  <article class="card app-card prayer-month-card">
 
     {#if !showMonthSection}
       <div class="month-skeleton">
@@ -141,8 +139,9 @@
         <div class="skeleton skeleton-text" style="width: 48%"></div>
       </div>
     {:else}
-      <table class="border large-space" style="overflow-x: auto; --text-size: {textSizeValue}%">
-      <thead>
+      <div class="monthly-table-wrapper">
+        <table class="border large-space" style="--text-size: {textSizeValue}%">
+          <thead>
         <tr>
           <th class:larger={isLargerValue}>Datum</th>
           <th class:larger={isLargerValue}>Fajr</th>
@@ -180,17 +179,54 @@
           </tr>
         {/each}
       </tbody>
-      </table>
+        </table>
+      </div>
     {/if}
   </article>
 </main>
 <style>
-  
-  .tabs>a.active {
-    color: rgb(56, 142, 60);
-    border-bottom: 0.125rem solid rgb(56, 142, 60)
+  .month-heading {
+    text-align: center;
+    display: block;
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--app-text-muted, #3d5247);
   }
-  /* Force consistent tab colors across desktop/mobile + visited links */
+
+  .prayer-month-card {
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .monthly-table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    width: 100%;
+  }
+
+  .prayer-month-card {
+    overflow-x: auto !important;
+    touch-action: pan-x;
+  }
+
+  .monthly-table-wrapper table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 4px;
+    overflow-x: hidden;
+  }
+
   .tabs > a,
   .tabs > a:visited,
   .tabs > a:hover,
@@ -198,15 +234,30 @@
     color: inherit;
     text-decoration: none;
   }
-  .tabs > a.active,
-  .tabs > a.active:visited,
-  .tabs > a.active:hover,
-  .tabs > a.active:focus {
-    color: rgb(56, 142, 60) !important;
-    border-bottom: 0.125rem solid rgb(56, 142, 60) !important;
+
+  .tabs > a {
+    flex: 1 1 calc(33.333% - 8px);
+    min-width: 90px;
+    padding: 10px 12px !important;
+    white-space: normal;
+    overflow: visible;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
   }
+
+  @media (max-width: 520px) {
+    .tabs > a {
+      flex: 1 1 40%;
+      font-size: 0.84rem !important;
+      padding: 9px 10px !important;
+    }
+  }
+
   .larger {
-    font-size: var(--text-size)
+    font-size: var(--text-size);
   }
 
   .month-skeleton {
@@ -217,16 +268,13 @@
 
   .skeleton {
     display: inline-block;
-    background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.22), rgba(255,255,255,0.10));
-    background-size: 200% 100%;
-    animation: shimmer 1.2s ease-in-out infinite;
+    background: rgba(20, 23, 17, 0.08);
     border-radius: 10px;
   }
   .skeleton-text {
     height: 14px;
   }
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+  :global(.app-shell[data-theme="dark"]) .skeleton {
+    background: rgba(233, 239, 233, 0.12);
   }
 </style>
