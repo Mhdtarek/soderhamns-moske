@@ -51,12 +51,7 @@ export function normalizePrayerTimesMonth(rows) {
  * @param {{ [x: string]: any; }} prayerTimes
  */
 export function getNextPrayerTime(timeObject) {
-  const currentTime = new Date();
-  const currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes();
-  const currentFormattedTime = `${currentHour
-    .toString()
-    .padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
+  const currentFormattedTime = getStockholmHourMinute(new Date());
 
   const prayerKeys = ["Fajr", "Shuruk", "Dhohr", "Asr", "Maghrib", "Isha"];
   const todaysPrayers = prayerKeys
@@ -117,8 +112,32 @@ export function getMonthPrayerTime(monthToJson, month) {
 }
 
 /**
- * @param {{ getDate: () => any; getMonth: () => number; }} date
+ * Dagens gregorianska datum i Europe/Stockholm (samma som bönetids-JSON är indexerat på).
+ * @param {Date} [date]
  */
-export function dateToDayAndMonth(date) {
-  return { day: date.getDate(), month: date.getMonth() + 1 };
+export function dateToDayAndMonth(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Stockholm",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).formatToParts(date);
+  const day = Number(parts.find((p) => p.type === "day")?.value);
+  const month = Number(parts.find((p) => p.type === "month")?.value);
+  const year = Number(parts.find((p) => p.type === "year")?.value);
+  return { day, month, year };
+}
+
+export function getStockholmHourMinute(now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Stockholm",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+  let h = parts.find((p) => p.type === "hour")?.value ?? "00";
+  let m = parts.find((p) => p.type === "minute")?.value ?? "00";
+  if (h.length === 1) h = `0${h}`;
+  if (m.length === 1) m = `0${m}`;
+  return `${h}:${m}`;
 }

@@ -1,5 +1,5 @@
 {
-  "background_color": "#16ad00",
+  "background_color": "#f0f4f1",
   "description": "Se bönetider I söderhamn",
   "dir": "ltr",
   "display": "standalone",
@@ -8,7 +8,7 @@
   "scope": "/app",
   "short_name": "Söderhamns Moske",
   "start_url": "/app",
-  "theme_color": "#00c908",
+  "theme_color": "#1b6b4a",
   "categories": ["utilities"],
   "screenshots": [],
   "icons": [

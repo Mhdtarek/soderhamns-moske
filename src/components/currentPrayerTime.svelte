@@ -89,7 +89,7 @@
   });
 </script>
 
-<article class="card green5 next-prayer-card" aria-live="polite">
+<article class="card app-card next-prayer-card" aria-live="polite">
   <p class="label">Nästa bönetid</p>
   {#if hasError}
     <p class="error">Kunde inte hämta bönetid</p>
@@ -104,50 +104,75 @@
 
 <style>
   .next-prayer-card {
-    margin-top: 10px;
-    padding: 10px 12px 12px 12px;
+    margin-top: 12px;
+    padding: 1.25rem 1.125rem 1.125rem;
     position: relative;
+    overflow: hidden;
+  }
+
+  .next-prayer-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--app-gold, #a67c29),
+      var(--app-accent, #134632) 42%,
+      var(--app-accent, #134632) 58%,
+      var(--app-gold, #a67c29)
+    );
+    pointer-events: none;
   }
 
   .label {
     margin: 0;
     position: absolute;
-    top: 8px;
-    left: 10px;
-    font-size: 0.74rem;
-    opacity: 0.85;
+    top: 10px;
+    left: 12px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--app-text-muted, #3d5247);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
   }
 
   .name {
-    margin: 12px 0 2px 0;
-    font-weight: 700;
-    font-size: 1.75rem;
+    margin: 1.5rem 0 0.25rem 0;
+    font-family: var(--app-font-display, "Cormorant Garamond", serif);
+    font-weight: 600;
+    font-size: clamp(1.65rem, 4.5vw, 2.15rem);
     line-height: 1.2;
     text-align: center;
+    color: var(--app-text, #14221a);
+    letter-spacing: 0.03em;
   }
 
   .time {
-    margin: 6px 0 0 0;
-    font-size: 0.82rem;
-    text-align: right;
-    opacity: 0.9;
+    margin: 0.75rem 0 0 0;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--app-text-muted, #3d5247);
   }
 
   .countdown {
-    margin: 0;
+    margin: 0.25rem 0 0 0;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: clamp(1.75rem, 5vw, 2.35rem);
     text-align: center;
     font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    color: var(--app-accent, #1b6b4a);
   }
 
   .error,
   .loading {
-    margin: 14px 0 2px 0;
-    font-size: 0.9rem;
+    margin: 1.5rem 0 0.25rem 0;
+    font-size: 1.05rem;
     text-align: center;
+    color: var(--app-text-muted, #3d5247);
   }
 </style>
