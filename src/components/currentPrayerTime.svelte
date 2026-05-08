@@ -5,8 +5,6 @@
   let hasError = false;
   let nextPrayer = "";
   let nextPrayerTime = "";
-  /** @type {Date | null} */
-  let targetTime = null;
   let countdown = "--:--:--";
   /** @type {ReturnType<typeof setInterval> | undefined} */
   let countdownInterval;
@@ -27,6 +25,44 @@
     return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   }
 
+  function getStockholmTimeParts(now = new Date()) {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Stockholm",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).formatToParts(now);
+
+    return {
+      hour: Number(parts.find((part) => part.type === "hour")?.value ?? "0"),
+      minute: Number(parts.find((part) => part.type === "minute")?.value ?? "0"),
+      second: Number(parts.find((part) => part.type === "second")?.value ?? "0"),
+    };
+  }
+
+  function parseTimeToSeconds(timeString) {
+    const [hours, minutes] = timeString.split(":").map(Number);
+    return hours * 3600 + minutes * 60;
+  }
+
+  function getNextPrayerCountdownMs(prayerTime) {
+    if (!isValidTimeFormat(prayerTime)) {
+      return 0;
+    }
+
+    const now = new Date();
+    const { hour, minute, second } = getStockholmTimeParts(now);
+    const currentSeconds = hour * 3600 + minute * 60 + second;
+    let targetSeconds = parseTimeToSeconds(prayerTime);
+
+    if (targetSeconds <= currentSeconds) {
+      targetSeconds += 24 * 3600;
+    }
+
+    return (targetSeconds - currentSeconds) * 1000;
+  }
+
   async function loadNextPrayer() {
     isLoading = true;
     hasError = false;
@@ -39,15 +75,9 @@
         throw new Error("Invalid next prayer time format");
       }
 
-      const now = new Date();
-      const [hours, minutes] = data.time.split(":").map(Number);
-      const candidate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, 0, 0);
-      if (candidate <= now) candidate.setDate(candidate.getDate() + 1);
-
       nextPrayer = data.key || "Nästa";
       nextPrayerTime = data.time;
-      targetTime = candidate;
-      countdown = formatCountdown(targetTime.getTime() - Date.now());
+      countdown = formatCountdown(getNextPrayerCountdownMs(nextPrayerTime));
       startCountdown();
     } catch (error) {
       hasError = true;
@@ -62,16 +92,16 @@
     clearInterval(countdownInterval);
 
     countdownInterval = setInterval(() => {
-      if (!targetTime) return;
-      const timeDifference = targetTime.getTime() - Date.now();
+      if (!nextPrayerTime) return;
+      const remainingMs = getNextPrayerCountdownMs(nextPrayerTime);
 
-      if (timeDifference <= 0) {
+      if (remainingMs <= 0) {
         clearInterval(countdownInterval);
         loadNextPrayer();
         return;
       }
 
-      countdown = formatCountdown(timeDifference);
+      countdown = formatCountdown(remainingMs);
     }, 1000);
   }
 

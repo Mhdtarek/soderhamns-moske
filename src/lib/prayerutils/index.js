@@ -50,8 +50,17 @@ export function normalizePrayerTimesMonth(rows) {
 /**
  * @param {{ [x: string]: any; }} prayerTimes
  */
-export function getNextPrayerTime(timeObject) {
-  const currentFormattedTime = getStockholmHourMinute(new Date());
+function parsePrayerTimeToMinutes(timeString) {
+  const [hours, minutes] = timeString.split(":").map(Number);
+  if (!Number.isFinite(hours) || !Number.isFinite(minutes)) {
+    return NaN;
+  }
+  return hours * 60 + minutes;
+}
+
+export function getNextPrayerTime(timeObject, now = new Date()) {
+  const currentFormattedTime = getStockholmHourMinute(now);
+  const currentMinutes = parsePrayerTimeToMinutes(currentFormattedTime);
 
   const prayerKeys = ["Fajr", "Shuruk", "Dhohr", "Asr", "Maghrib", "Isha"];
   const todaysPrayers = prayerKeys
@@ -59,7 +68,8 @@ export function getNextPrayerTime(timeObject) {
     .filter((entry) => typeof entry.time === "string");
 
   for (let i = 0; i < todaysPrayers.length; i++) {
-    if (todaysPrayers[i].time >= currentFormattedTime) {
+    const prayerMinutes = parsePrayerTimeToMinutes(todaysPrayers[i].time);
+    if (!Number.isNaN(prayerMinutes) && prayerMinutes >= currentMinutes) {
       return todaysPrayers[i];
     }
   }
