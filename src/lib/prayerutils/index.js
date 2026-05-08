@@ -86,7 +86,7 @@ export function getNextPrayerTime(timeObject, now = new Date()) {
 
 export function getSpecificDayPrayerTimes(monthToJson, month, day) {
   const monthPrayerTimes = monthToJson.find(
-    (element) => element.month === month
+    (element) => element.month === month,
   );
 
   if (!monthPrayerTimes) {
@@ -94,7 +94,7 @@ export function getSpecificDayPrayerTimes(monthToJson, month, day) {
   }
 
   const dayPrayerTimes = monthPrayerTimes.file.find(
-    (element) => String(element.Dat) === String(day)
+    (element) => String(element.Dat) === String(day),
   );
 
   if (!dayPrayerTimes) {
@@ -111,7 +111,7 @@ export function getSpecificDayPrayerTimes(monthToJson, month, day) {
 
 export function getMonthPrayerTime(monthToJson, month) {
   const monthPrayerTimes = monthToJson.find(
-    (element) => element.month === month
+    (element) => element.month === month,
   );
 
   if (!monthPrayerTimes) {
