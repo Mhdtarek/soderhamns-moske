@@ -1,0 +1,12 @@
+import { c as create_ssr_component, v as validate_component } from "../../chunks/ssr.js";
+import { P as PrayerTimes } from "../../chunks/PrayerTimes.js";
+const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { data = {} } = $$props;
+  data.prayerTimes;
+  if ($$props.data === void 0 && $$bindings.data && data !== void 0)
+    $$bindings.data(data);
+  return `${$$result.head += `<!-- HEAD_svelte-1uw39sf_START --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Ladda ned Söderhamns Moske app"><meta name="keywords" content="Söderhamns Moske, app, ladda ned"><meta name="author" content="Söderhamns Islamiska Kultur Förening"><meta name="robots" content="index, follow"><meta property="og:title" content="Ladda ned Söderhamns Moske App"><meta property="og:description" content="Ladda ned Söderhamns Moske app"><meta property="og:image" content="/mosque.png"><meta property="og:url" content="https://soderhamns-moske.netlify.app"><meta property="og:type" content="website">${$$result.title = `<title>Ladda ned Söderhamns Moske Appen</title>`, ""}<!-- HEAD_svelte-1uw39sf_END -->`, ""} <main class="green3"><div class="container"><main class="responsive"><article class="no-padding border primary-container" data-svelte-h="svelte-16ktdtc"><img class="responsive medium" src="/mosque.png"> <div class="absolute bottom left right padding bottom-shadow white-text"><nav><h5 style="text-align: center; display: block;">Söderhamns Moské</h5> <div class="max"></div></nav></div></article> <section style="display: grid; align-items: center; margin-top: 50px" data-svelte-h="svelte-ib1r0l"><a href="https://play.google.com/store/apps/details?id=mhdtarek.soderhamnmoske" class="button green10 button large">Ladda ned</a> <a href="https://soderhamns-moske.netlify.app/privacy-policy" class="underline">integritetspolicy</a></section> ${validate_component(PrayerTimes, "PrayerTimes").$$render($$result, { prayerTimes: data.prayerTimes }, {}, {})}</main></div></main>`;
+});
+export {
+  Page as default
+};

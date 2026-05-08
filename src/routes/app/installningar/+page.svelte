@@ -1,67 +1,97 @@
 <script>
-  import { onMount } from 'svelte';
-  import { isLarger } from "$lib/stores";
-  import { browser } from '$app/environment';
+  import { isLarger, appTheme, SHOW_LARGER_TEXT_SETTING } from "$lib/stores";
+  import { browser } from "$app/environment";
 
   let isTextChecked = false;
-  
-  onMount(async () => {
-    // Load the initial value from localStorage if it exists
+
+  if (browser && SHOW_LARGER_TEXT_SETTING) {
     const storedValue = localStorage.getItem("isTextChecked");
-    if (storedValue !== null) {
-      isTextChecked = storedValue === "true";
-    }
-  
-    // Whenever isTextChecked changes, save it to localStorage or remove it if false
-  });
-    $: {
+    if (storedValue !== null) isTextChecked = storedValue === "true";
+  }
 
-      if (isTextChecked && browser) {
-        localStorage.setItem("isTextChecked", "true");
-      } else if (!isTextChecked && browser) {
-        localStorage.removeItem("isTextChecked");
-      }
+  $: if (SHOW_LARGER_TEXT_SETTING && browser) {
+    if (isTextChecked) {
+      localStorage.setItem("isTextChecked", "true");
+    } else {
+      localStorage.removeItem("isTextChecked");
     }
+  }
 
-  $: isLarger.set(isTextChecked);
+  $: if (SHOW_LARGER_TEXT_SETTING) {
+    isLarger.set(isTextChecked);
+  }
+
+  /** @param {Event & { currentTarget: HTMLInputElement }} e */
+  function onThemeChange(e) {
+    appTheme.set(e.currentTarget.checked ? "dark" : "light");
+  }
 </script>
+
 <svelte:head>
   <title>APP | INSTÄLLNINGAR</title>
 </svelte:head>
-<main>
-<article>
-  <h1 style="text-align: center">Inställningar</h1>
-  <div>
-    <nav>
-      <div class="max">
-        <h6>Gör allt större</h6>
-        <div>Gör allting i appen större för äldre folk.</div>
+
+<main class="app-page app-settings">
+  <h1>Inställningar</h1>
+  {#if SHOW_LARGER_TEXT_SETTING}
+    <div class="app-setting-row">
+      <div class="copy">
+        <h2>Större text</h2>
+        <p>Större text i tabeller och viktiga rubriker.</p>
       </div>
-      <label class="switch">
-        <input type="checkbox" bind:checked={isTextChecked}>
+      <label class="switch" aria-label="Större text">
+        <input type="checkbox" bind:checked={isTextChecked} />
         <span></span>
       </label>
-    </nav>
-  </div>
-  {#if isTextChecked}
-    <div style="margin-top: 20px;">
-      Aktiverat!
     </div>
   {/if}
-</article>
+  <div class="app-setting-row">
+    <div class="copy">
+      <h2>Mörkt läge</h2>
+      <p>Mörk bakgrund och ljus text.</p>
+    </div>
+    <label class="switch" aria-label="Mörkt läge">
+      <input
+        type="checkbox"
+        checked={$appTheme === "dark"}
+        on:change={onThemeChange}
+      />
+      <span></span>
+    </label>
+  </div>
+  {#if SHOW_LARGER_TEXT_SETTING && isTextChecked}
+    <p class="settings-on" role="status">Större text är på.</p>
+  {/if}
 </main>
+
 <style>
-main {
-  height: 100vh;
-  display: grid;
-  place-items: center;
-}
-article {
-  height: 80vh;
-  width: 95vw;
-}
-h1 {
-  text-align: center;
-  display: block;
-}
+  .app-settings {
+    padding-top: 1.25rem;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0 0 1.25rem;
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.125rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .copy p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--app-text-muted, #3d5247);
+    line-height: 1.45;
+  }
+
+  .settings-on {
+    margin: 1rem 0 0;
+    text-align: center;
+    font-weight: 600;
+    color: var(--app-accent, #1b6b4a);
+    font-size: 1.05rem;
+  }
 </style>

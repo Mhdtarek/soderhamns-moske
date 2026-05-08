@@ -1,5 +1,5 @@
 <script>
-import { size, textSize, isLarger } from "$lib/stores";
+import { textSize, isLarger } from "$lib/stores";
 import { browser } from '$app/environment'; 
 import { page } from "$app/stores";
 
@@ -7,13 +7,9 @@ import { page } from "$app/stores";
   export let prayerTimes = {}
   export let header = ""
 
-  let sizeValue = ""
   let textSizeValue = 100
   let isLargerValue = false
 
-  size.subscribe((value) => {
-		sizeValue = value;
-	});
   textSize.subscribe((value) => {
 		textSizeValue = value;
 	});
@@ -30,11 +26,18 @@ import { page } from "$app/stores";
 
   $: isOnBonetiderPage = $page.url.pathname === "/app/bonetider";
 </script>
-<article class="card green5 prayer-times-card" style="overflow: hidden; --text-size: {textSizeValue}%">
+<article class="card app-card prayer-times-card" style="overflow: hidden; --text-size: {textSizeValue}%">
   <div class="card-header">
     <p class="header-label">{header || "Bönetider"}</p>
     {#if !isLoading}
-      <p class="header-date">{prayerTimes.month}/{prayerTimes.Dat}</p>
+      <div class="header-date">
+        {#if prayerTimes.hijri?.label}
+          <span class="header-hijri">{prayerTimes.hijri.label}</span>
+        {/if}
+        <span class="header-gregorian">
+          {prayerTimes.gregorianLabel ?? `${prayerTimes.Dat}/${prayerTimes.month}`}
+        </span>
+      </div>
     {/if}
   </div>
 
@@ -121,8 +124,8 @@ import { page } from "$app/stores";
     --text-size: 100%;
   }
   .prayer-times-card {
-    margin-top: 10px;
-    padding: 10px 10px 12px 10px;
+    margin-top: 12px;
+    padding: 14px 14px 16px;
   }
 
   .larger {
@@ -131,26 +134,95 @@ import { page } from "$app/stores";
 
   .card-header {
     position: relative;
-    min-height: 16px;
-    padding: 0 6px 2px 6px;
+    min-height: 48px;
+    padding: 0 6px 10px 6px;
   }
 
   .header-label {
     margin: 0;
     position: absolute;
     top: 0;
-    left: 0;
-    font-size: 0.74rem;
-    opacity: 0.85;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    left: 6px;
+    max-width: calc(50% - 6px);
+    font-family: var(--app-font-display, "Cormorant Garamond", serif);
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.88;
+    letter-spacing: 0.06em;
+    color: var(--app-text-muted, #4a463c);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .header-date {
     margin: 0;
+    position: absolute;
+    top: 0;
+    right: 6px;
     font-size: 0.82rem;
+    line-height: 1.25;
     text-align: right;
-    opacity: 0.9;
+    color: var(--app-text-muted, #4a463c);
+    opacity: 0.92;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    max-width: calc(48% - 6px);
+    min-width: calc(35% - 6px);
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .header-hijri,
+  .header-gregorian {
+    margin: 0;
+    white-space: normal;
+  }
+
+  @media (max-width: 520px) {
+    .header-label {
+      position: static;
+      max-width: 100%;
+      white-space: normal;
+      overflow: visible;
+      margin-bottom: 5px;
+    }
+
+    .header-date {
+      text-align: right;
+      align-items: flex-end;
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header-label {
+      max-width: calc(45% - 6px);
+    }
+
+    .header-date {
+      min-width: calc(40% - 6px);
+      max-width: calc(52% - 6px);
+    }
+  }
+
+  .header-hijri {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--app-accent, #1b6b4a);
+    opacity: 0.95;
+  }
+
+  .header-gregorian {
+    margin: 0;
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--app-text-muted, #4a463c);
+    opacity: 0.92;
   }
 
   .meta-row {
@@ -159,24 +231,48 @@ import { page } from "$app/stores";
 
   .more-link {
     display: inline-block;
-    margin: 8px 6px 0 6px;
-    font-size: 0.9rem;
+    margin: 12px 4px 0;
+    padding: 10px 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--app-radius-sm, 12px);
+    background: var(--app-accent-soft, #d4ebe0);
+    color: var(--app-accent, #1b6b4a) !important;
+    text-decoration: none !important;
   }
 
-  /* Lightweight shimmer skeleton (no dependencies) */
+  .more-link:focus-visible {
+    outline: 2px solid var(--app-accent, #1b6b4a);
+    outline-offset: 2px;
+  }
+
+  :global(.app-shell) .prayer-table :is(th, td) {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    font-size: 1.05rem;
+  }
+
+  :global(.app-shell) .prayer-table thead th {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--app-text-muted, #3d5247);
+  }
+
+  :global(.app-shell) .prayer-table :is(th, td).larger {
+    font-size: var(--text-size);
+  }
+
   .skeleton {
     display: inline-block;
-    background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.22), rgba(255,255,255,0.10));
-    background-size: 200% 100%;
-    animation: shimmer 1.2s ease-in-out infinite;
+    background: rgba(20, 23, 17, 0.08);
     border-radius: 10px;
   }
   .skeleton-text {
     height: 14px;
     vertical-align: middle;
   }
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+  :global(.app-shell[data-theme="dark"]) .skeleton {
+    background: rgba(233, 239, 233, 0.12);
   }
 </style>

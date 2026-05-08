@@ -1,4 +1,5 @@
 import { json, error } from "@sveltejs/kit";
+import { enrichPrayerTimesCalendar } from "$lib/hijriDate";
 import {
   monthToJsonFile,
   getSpecificDayPrayerTimes,
@@ -6,23 +7,35 @@ import {
   normalizePrayerTimesRow,
 } from "$lib/prayerutils";
 // @ts-ignore
-export function GET({ url, params }) {
-  // @ts-ignore
-  const today = dateToDayAndMonth(new Date());
-  const month = today.month.toString();
-  const day = today.day + 1;
-  const dayString = day.toString();
+export function GET() {
+  const t = dateToDayAndMonth(new Date());
+  let y = t.year;
+  let m = t.month;
+  let d = t.day + 1;
+  const daysInMonth = new Date(y, m, 0).getDate();
+  if (d > daysInMonth) {
+    d = 1;
+    m += 1;
+    if (m > 12) {
+      m = 1;
+      y += 1;
+    }
+  }
+
+  const monthStr = String(m);
+  const dayStr = String(d);
 
   try {
-    let dayPrayerTimes = getSpecificDayPrayerTimes(
+    const dayPrayerTimes = getSpecificDayPrayerTimes(
       monthToJsonFile,
-      month,
-      dayString
+      monthStr,
+      dayStr
     );
-    return json({ ...normalizePrayerTimesRow(dayPrayerTimes), month: Number(month) });
+    return json(
+      enrichPrayerTimesCalendar(normalizePrayerTimesRow(dayPrayerTimes), y, m, d)
+    );
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);
-    // Handle the error or provide an appropriate fallback
   }
 }

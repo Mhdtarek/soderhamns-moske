@@ -1,4 +1,5 @@
 import { json, error } from "@sveltejs/kit";
+import { enrichPrayerTimesCalendar } from "$lib/hijriDate";
 import {
   monthToJsonFile,
   getSpecificDayPrayerTimes,
@@ -6,42 +7,35 @@ import {
   normalizePrayerTimesRow,
 } from "$lib/prayerutils";
 
-// Function to get the last day of the previous month
-function getLastDayOfPreviousMonth(year, month) {
-  return new Date(year, month - 1, 0).getDate();
-}
-
 // @ts-ignore
-export function GET({ url, params }) {
-  // @ts-ignore
-  const today = dateToDayAndMonth(new Date());
-  let month = today.month.toString();
-  let day = today.day - 1;
-  const dayString = day.toString();
-
-  // Check if today is the first day of the month
-  if (day === 0) {
-    // Get the last day of the previous month
-    const lastDayOfPrevMonth = getLastDayOfPreviousMonth(
-      today.year,
-      today.month
-    );
-    // Set month to the previous month
-    month = (today.month - 1).toString();
-    // Set day to the last day of the previous month
-    day = lastDayOfPrevMonth;
+export function GET() {
+  const t = dateToDayAndMonth(new Date());
+  let y = t.year;
+  let m = t.month;
+  let d = t.day - 1;
+  if (d < 1) {
+    m -= 1;
+    if (m < 1) {
+      m = 12;
+      y -= 1;
+    }
+    d = new Date(y, m, 0).getDate();
   }
 
+  const monthStr = String(m);
+  const dayStr = String(d);
+
   try {
-    let dayPrayerTimes = getSpecificDayPrayerTimes(
+    const dayPrayerTimes = getSpecificDayPrayerTimes(
       monthToJsonFile,
-      month,
-      day.toString()
+      monthStr,
+      dayStr
     );
-    return json({ ...normalizePrayerTimesRow(dayPrayerTimes), month: Number(month) });
+    return json(
+      enrichPrayerTimesCalendar(normalizePrayerTimesRow(dayPrayerTimes), y, m, d)
+    );
   } catch (err) {
     // @ts-ignore
     throw error(400, err.message);
-    // Handle the error or provide an appropriate fallback
   }
 }

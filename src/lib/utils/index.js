@@ -16,17 +16,17 @@ export const fetchMarkdownPosts = async () => {
       })
     );
     allPosts.sort((a, b) => {
-      // Perform sorting based on the meta.date property
+      // Perform date comparison thing
       const dateA = new Date(a.meta.date);
       const dateB = new Date(b.meta.date);
 
-      // Sort in descending order (newest date first)
+      // Siort in descending order (newest first)
       return dateB - dateA;
     });
 
     return allPosts;
   }
 
-  // Return an empty array if there are no posts
+  // empty array if you cant find a post!
   return [];
 };

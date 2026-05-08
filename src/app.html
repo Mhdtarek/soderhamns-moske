@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <!-- Reference the manifest.webmanifest file -->
     <link rel="manifest" href="manifest.webmanifest" />
-
-    <!-- Reference the manifest.json file -->
-    <link rel="manifest" href="manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <meta
       name="viewport"
-      content="initial-scale=1, viewport-fit=cover, user-scalable=no"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     %sveltekit.head%
   </head>
@@ -34,7 +35,7 @@
       overscroll-behavior-y: auto;
     }
 
-    /* Mobile only tweaks */
+    /* mobile only goofy tweak */
     @media (max-width: 991px) {
       html,
       body {
@@ -42,7 +43,6 @@
       }
     }
 
-    /* BeerCSS uses `.wrapper` as an app shell; ensure it can scroll */
     .wrapper {
       min-height: 100dvh;
       height: auto !important;
@@ -50,7 +50,6 @@
       overflow-x: hidden !important;
     }
   </style>
-  <script src="sw.js"></script>
   <script
     type="module"
     src="https://cdn.jsdelivr.net/npm/beercss@3.2.10/dist/cdn/beer.min.js"
